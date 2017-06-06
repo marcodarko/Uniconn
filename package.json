@@ -1,0 +1,44 @@
+{
+  "name": "uniconn",
+  "version": "1.0.0",
+  "description": "gay connection app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcodarko/Uniconn.git"
+  },
+  "author": "marcodarko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcodarko/Uniconn/issues"
+  },
+  "homepage": "https://github.com/marcodarko/Uniconn#readme",
+  "dependencies": {
+    "axios": "^0.12.0",
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "create-react-class": "^15.5.3",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "express-validator": "^3.2.0",
+    "mongoose": "^4.10.4",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.13",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.13.1"
+  }
+}
