@@ -2,8 +2,6 @@
 var React = require("react");
 var CreateReactClass = require('create-react-class');
 
-// Components
-var RegisterForm = require('./RegisterForm');
 
 
 var Main = CreateReactClass({
@@ -13,7 +11,8 @@ var Main = CreateReactClass({
 
     return (
     	<div className="container">
-    		<RegisterForm/>
+    		<a href="/Register" className="btn btn-primary btn-lg">Register</a>
+    		{this.props.children}
 		</div>
     );
   }

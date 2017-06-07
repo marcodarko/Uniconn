@@ -14,23 +14,23 @@ var RegisterForm = CreateReactClass({
 			<form method="post" action="/register">
 			   <div className="form-group">
 			    <label>Name</label>
-			    <input type="text" className="form-control" placeholder="Name" name="name"></input>
+			    <input type="text" className="form-control" placeholder="Name" name="name" required></input>
 			  </div>
 			  <div className="form-group">
 			    <label>Username</label>
-			    <input type="text" className="form-control" placeholder="Username" name="username"></input>
+			    <input type="text" className="form-control" placeholder="Username" name="username" required></input>
 			  </div>
 			   <div className="form-group">
 			    <label>Email</label>
-			    <input type="email" className="form-control" placeholder="Email" name="email"></input>
+			    <input type="email" className="form-control" placeholder="Email" name="email" required></input>
 			  </div>
 			  <div className="form-group">
 			    <label>Password</label>
-			    <input type="password" className="form-control" placeholder="Password" name="password"></input>
+			    <input type="password" className="form-control" placeholder="Password" name="password" required></input>
 			  </div>
 			  <div className="form-group">
 			    <label>Confirm Password</label>
-			    <input type="password" className="form-control" placeholder="Password" name="password2"></input>
+			    <input type="password" className="form-control" placeholder="Password" name="password2" required></input>
 			  </div>
 			  <button type="submit" className="btn btn-default">Submit</button>
 			</form>
