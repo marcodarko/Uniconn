@@ -1,8 +1,9 @@
 // Include React
 var React = require("react");
-
-
 var CreateReactClass = require('create-react-class');
+
+// Components
+var RegisterForm = require('RegisterForm');
 
 
 var Main = CreateReactClass({
@@ -11,10 +12,9 @@ var Main = CreateReactClass({
   render: function() {
 
     return (
-      <div className="container">
-        <h1> Hello World</h1>
-      </div>
-
+    	<div className="container">
+    		<RegisterForm/>
+		</div>
     );
   }
 

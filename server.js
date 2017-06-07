@@ -9,6 +9,12 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+// Mongoose mpromise deprecated - use bluebird promises
+var Promise = require("bluebird");
+var methodOverride= require('method-override');
+
+mongoose.Promise = Promise;
+
 
 // // Require Click schema
 // var Address = require("./models/Address");
@@ -26,6 +32,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("public"));
+app.use(methodOverride("_method"));
 
 // -------------------------------------------------
 
@@ -85,9 +92,6 @@ app.use(function (req, res, next) {
 var routes = require('./controllers/routes.js');
 // -------------------------------------------------
 app.use(routes);
-
-
-
 
 // Starting our express server
 app.listen(PORT, function() {
