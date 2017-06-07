@@ -1,7 +1,5 @@
 // Include React
 var React = require("react");
-
-
 var CreateReactClass = require('create-react-class');
 
 
@@ -11,6 +9,7 @@ var RegisterForm = CreateReactClass({
   render: function() {
 
     return (
+
     	<div className="container">
 			<form method="post" action="/register">
 			   <div className="form-group">
@@ -43,3 +42,6 @@ var RegisterForm = CreateReactClass({
 
 // Export the component back for use in other files
 module.exports = RegisterForm;
+
+
+

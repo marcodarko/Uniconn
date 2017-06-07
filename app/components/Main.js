@@ -3,7 +3,7 @@ var React = require("react");
 var CreateReactClass = require('create-react-class');
 
 // Components
-var RegisterForm = require('RegisterForm');
+var RegisterForm = require('./RegisterForm');
 
 
 var Main = CreateReactClass({
