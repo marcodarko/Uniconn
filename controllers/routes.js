@@ -22,37 +22,32 @@ function ensureAuthenticated(req, res, next){
 
 router.post('/register', function(req, res){
 
-	var name = req.body.name;
-	var email = req.body.email;
-	var username = req.body.username;
-	var password = req.body.password;
-	var password2 = req.body.password2;
+	// var name = req.body.name;
+	// var email = req.body.email;
+	// var username = req.body.username;
+	// var password = req.body.password;
+	// var password2 = req.body.password2;
+	console.log("REQ BODY ITEMS:");
+	console.log(req.body.name);
+	console.log(req.body.email);
+	console.log(req.body.username);
+	console.log(req.body.password);
+	// console.log(password2);
 
-	console.log(name);
-	console.log(email);
-	console.log(username);
-	console.log(password);
-	console.log(password2);
+	// // Validation
+	// req.checkBody('name', 'Name is required').notEmpty();
+	// req.checkBody('email', 'Email is required').notEmpty();
+	// req.checkBody('email', 'Email is not valid').isEmail();
+	// req.checkBody('username', 'Username is required').notEmpty();
+	// req.checkBody('password', 'Password is required').notEmpty();
+	// req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-	// Validation
-	req.checkBody('name', 'Name is required').notEmpty();
-	req.checkBody('email', 'Email is required').notEmpty();
-	req.checkBody('email', 'Email is not valid').isEmail();
-	req.checkBody('username', 'Username is required').notEmpty();
-	req.checkBody('password', 'Password is required').notEmpty();
-	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
-	var errors = req.validationErrors();
-
-	if(errors){
-		console.log(errors);
-		res.send(errors);
-	} else {
+	// var errors = req.validationErrors();
 		var newUser = new User({
-			name: name,
-			email:email,
-			username: username,
-			password: password
+			name: req.body.name,
+			email: req.body.email,
+			username: req.body.username,
+			password: req.body.password
 		});
 
 		User.createUser(newUser, function(err, user){
@@ -61,7 +56,7 @@ router.post('/register', function(req, res){
 		});
 
 		res.send(newUser);
-	}
+	
 
 });
 
@@ -76,6 +71,7 @@ passport.use(new LocalStrategy(
    	User.comparePassword(password, user.password, function(err, isMatch){
    		if(err) throw err;
    		if(isMatch){
+   			console.log("USER FOUND");
    			return done(null, user);
    		} else {
    			return done(null, false, {message: 'Invalid password'});
@@ -92,6 +88,47 @@ passport.deserializeUser(function(id, done) {
   User.getUserById(id, function(err, user) {
     done(err, user);
   });
+});
+
+
+router.post('/login', function(req, res){
+
+	var username = req.body.username;
+	var password = req.body.password;
+	console.log("USERNAME: "+ username);
+	console.log("PASSWORD: "+ password);
+	
+	User.getUserByUsername(username, function(error, user){
+
+	   	if(error) {
+	   		console.log("No user found");
+	   		return res.send(error);
+	   	}
+
+	   	if(!user){
+	   		console.log("Not user");
+	   		return res.send(error);
+	   	}
+
+	   	User.comparePassword(password, user.password, function(err, isMatch){
+	   		if(err) throw err;
+	   		if(isMatch){
+	   			console.log("USER FOUND");
+	   			return res.send(user);
+	   		} else {
+	   			console.log("password was not a match");
+	   			return res.send(err);
+	   		}
+	   	});
+
+	});
+  
+  });
+
+router.get('/logout', function(req, res){
+	req.logout();
+
+	res.redirect('/login');
 });
 
 

@@ -1,6 +1,12 @@
 // Include React
 var React = require("react");
 var CreateReactClass = require('create-react-class');
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch, Match, Miss
+} from 'react-router-dom'
 
 
 
@@ -10,9 +16,11 @@ var Main = CreateReactClass({
   render: function() {
 
     return (
-    	<div className="container">
-    		<a href="/Register" className="btn btn-primary btn-lg">Register</a>
-    		{this.props.children}
+    	<div className="jumbotron mainHero">
+        <img className="heroImage fade-in-fwd" src="images/uniconn.png" alt="uniconn logo"/>
+    		<Link to="/login" className="btn  btn-lg themeButton">Login</Link>
+        <Link to="/register" className="btn  btn-lg themeButton">Register</Link>
+        
 		</div>
     );
   }
