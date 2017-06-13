@@ -1,74 +1,64 @@
-// Include React
-var React = require("react");
-var CreateReactClass = require('create-react-class');
+
 var axios = require("axios");
+import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch, Match, Miss
-} from 'react-router'
+  Link
+} from 'react-router-dom'
 
-var RegisterForm = CreateReactClass({
+export default class RegisterForm extends React.Component{
 
-getName: function(event){
+getName(event){
 
   	this.setState({
   		name: event.target.value
   	})
-},
-getUsername: function(event){
+}
+getUsername(event){
 
   	this.setState({
   		username: event.target.value
   	})
-},
-getEmail: function(event){
+}
+getEmail(event){
 
   	this.setState({
   		email: event.target.value
   	})
-},
-getPassword1: function(event){
+}
+getPassword1(event){
 
   	this.setState({
   		password1: event.target.value
   	})
-},
-getPassword2: function(event){
+}
+getPassword2(event){
 
   	this.setState({
   		password2: event.target.value
   	})
-},
-submitUser: function(event){
+}
+handleSubmit(){
 
+	if(this.state.password1 === this.state.password2){
 
+	let Rnew_name = this.state.name;
+	let Rnew_email = this.state.email;
+	let Rnew_username = this.state.username;
+	let Rnew_password = this.state.password1;
 
-	var userInfo= {
-		name: this.state.name,
-		email: this.state.email,
-		username: this.state.username,
-		password: this.state.password1
+	this.props.registerNewUser(Rnew_name, Rnew_email, Rnew_username, Rnew_password);
+
+	}
+	else{
+		alert("passwords must match");
 	}
 
- 	axios.post('/register', userInfo).then(USER=>{
-
- 		console.log("USER: "+USER);
-
- 		this.setState({
-
- 			USER: USER
-
- 		});
-
-
- 	});
-
-},
+}
 
   // Here we render the function
-  render: function() {
+  render() {
 
     return (
 
@@ -95,16 +85,14 @@ submitUser: function(event){
 			    <label>Confirm Password</label>
 			    <input type="password" className="form-control inputBack" placeholder="Password" name="password2" required onChange={this.getPassword2}></input>
 			  </div>
-			  <button type="button" onClick={this.submitUser} className="btn btn-lg themeButton">Submit</button>
+			  <button type="button" onClick={this.handleSubmit} className="btn btn-lg themeButton">Submit</button>
 			</form>
 		</div>
     );
   }
 
-});
+};
 
-// Export the component back for use in other files
-module.exports = RegisterForm;
 
 
 

@@ -1,33 +1,45 @@
-// Include React
-var React = require("react");
-var CreateReactClass = require('create-react-class');
+import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch, Match, Miss
-} from 'react-router'
+  Link
+} from 'react-router-dom'
 
-var RegisterForm = require('./RegisterForm');
-var LoginForm = require('./LoginForm');
-var App = require('./MainApp');
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 
+export default class Main extends React.Component{
 
-
-var Main = CreateReactClass({
-
-  getInitialState: function(){
-
-    return {
-
+  constructor(props) {
+    super(props);
+    this.state = {
       loggedIn: false,
-      userInfo: ""
+      errmsg: "",
+      USER: ""
+    };
+  }
 
-    }
+  componentWillMount(){
 
-  },
 
-  loggedIn: function(currentState){
+  }
+
+
+  renderLogin(){
+
+    return <LoginForm submitLoginInfo ={this.submitLoginInfo} />
+
+  }
+
+  renderRegister(){
+
+    return <RegisterForm registerNewUser={this.registerNewUser}/>
+
+  }
+
+ 
+
+  loggedIn(currentState){
 
     if(currentState == "true"){
         this.setState({
@@ -40,13 +52,13 @@ var Main = CreateReactClass({
       });
     }
 
-  },
+  }
 
-  submitLoginInfo: function(SentUsername, SentPassword){
+  submitLoginInfo(SentUsername, SentPassword){
 
   var LoginInfo= {
-    username: SentUsername,
-    password: SentPassword
+    username: SentUsername.trim(),
+    password: SentPassword.trim()
   }
 
   axios.post('/login', LoginInfo).then( USER=>{
@@ -79,25 +91,62 @@ var Main = CreateReactClass({
 
   });
 
-  },
+  }
+
+  registerNewUser(newN, newE, newU, newP){
+
+    var userInfo= {
+      name: newN.trim(),
+      email: newE.trim(),
+      username: newU.trim(),
+      password: newP.trim()
+    }
+
+      axios.post('/register', userInfo).then(USER=>{
+
+      console.log("USER: "+USER);
+
+      this.setState({
+
+        USER: USER
+
+      });
+
+
+    });
+
+  }
 
   // Here we render the function
-  render: function() {
+  render() {
+
+        if(this.state.loggedIn == false){
+            var child = this.renderLogin()
+          }
+
+
+        if (this.state.errmsg){
+          var alert = <div className="alert alert-primary"><b>{this.state.errmsg}</b></div>;
+        }
 
     return (
     	<div className="container mainHero">
-      <Link to="/login" className="btn  btn-lg themeButton">Login</Link>
-      <Link to="/register" className="btn  btn-lg themeButton">Register</Link>
+        <img className="heroImage fade-in-fwd" src="images/uniconn.svg" alt="uniconn logo"/>
 
-      {this.props.children}
-      <App/>
-        
+          {alert}
+        <Link to="/login" className="btn  btn-lg themeButton">Login</Link>
+        <Link to="/register" className="btn  btn-lg themeButton">Register</Link>
+          {child}
+          {this.props.children}
 		  </div>
+
+
       
     );
   }
 
-});
+};
 
-// Export the component back for use in other files
-module.exports = Main;
+
+
+
