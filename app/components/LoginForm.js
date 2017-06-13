@@ -7,7 +7,7 @@ import {
   Route,
   Link,
   Switch, Match, Miss
-} from 'react-router-dom'
+} from 'react-router'
 
 var LoginForm = CreateReactClass({
 

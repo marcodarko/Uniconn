@@ -9,13 +9,13 @@ var router = require("react-router");
 var hashHistory = router.hashHistory;
 
 // Include the IndexRoute (catch-all route)
-var IndexRoute = router.IndexRoute;
+// var IndexRoute = router.IndexRoute;
 
 import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch, Match, Miss
+  Switch
 } from 'react-router-dom'
 
 // Include the Main Component
@@ -23,26 +23,27 @@ var Main = require("../components/Main");
 // Components
 var RegisterForm = require('../components/RegisterForm');
 var LoginForm = require('../components/LoginForm');
-
-var Test = require('../components/Test');
+var App = require('../components/MainApp');
 
 // Export the Routes
 module.exports = (
 
   // The high level component is the Router component
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <div className="container">
- 
-    <Switch>
-        <Route exact path="/" component={Main}/>
-        <Route path="/login" component={LoginForm} />
-        <Route path="/register" component={RegisterForm} />
-        <Route render={function(){
-            return <p>Not Found</p>
-        }}/>
-      </Switch>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/register">About</Link></li>
+        <li><Link to="/login">Topics</Link></li>
+      </ul>
 
+      <hr/>
+
+      <Route exact path="/" component={Main}/>
+      <Route path="/about" component={LoginForm}/>
+      <Route path="/topics" component={RegisterForm}/>
+      <Route component={App}/>
     </div>
-      
   </Router>
 );
+
