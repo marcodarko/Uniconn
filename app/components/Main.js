@@ -37,18 +37,18 @@ export default class Main extends React.Component{
 
   }
 
- 
+  
 
   loggedIn(currentState){
 
     if(currentState == "true"){
-        this.setState({
-      loggedIn: true
+      this.setState({
+        loggedIn: true
       });
     }
-     else if(currentState == "false"){
-        this.setState({
-      loggedIn: false
+    else if(currentState == "false"){
+      this.setState({
+        loggedIn: false
       });
     }
 
@@ -56,40 +56,40 @@ export default class Main extends React.Component{
 
   submitLoginInfo(SentUsername, SentPassword){
 
-  var LoginInfo= {
-    username: SentUsername.trim(),
-    password: SentPassword.trim()
-  }
+    var LoginInfo= {
+      username: SentUsername.trim(),
+      password: SentPassword.trim()
+    }
 
-  axios.post('/login', LoginInfo).then( USER=>{
+    axios.post('/login', LoginInfo).then( USER=>{
 
-  if(USER.data){
-    var test = JSON.stringify(USER.data);
+      if(USER.data){
+        var test = JSON.stringify(USER.data);
 
-      console.log("axios response");
-      console.log(test);
+        console.log("axios response");
+        console.log(test);
 
-      this.setState({
+        this.setState({
 
-        USER: USER.data,
-        errmsg: "YOU'RE LOGGED IN"
+          USER: USER.data,
+          errmsg: "YOU'RE LOGGED IN"
 
-      });
+        });
 
-      console.log(this.state.USER);
-  }
-  else{
-    this.setState({
-        errmsg: "Try Again"
-      });
-  }
-    
+        console.log(this.state.USER);
+      }
+      else{
+        this.setState({
+          errmsg: "Try Again"
+        });
+      }
+      
 
-  }).catch( err =>{
+    }).catch( err =>{
 
-  console.log(err);
+      console.log(err);
 
-  });
+    });
 
   }
 
@@ -102,7 +102,7 @@ export default class Main extends React.Component{
       password: newP.trim()
     }
 
-      axios.post('/register', userInfo).then(USER=>{
+    axios.post('/register', userInfo).then(USER=>{
 
       console.log("USER: "+USER);
 
@@ -120,29 +120,29 @@ export default class Main extends React.Component{
   // Here we render the function
   render() {
 
-        if(this.state.loggedIn == false){
-            var child = this.renderLogin()
-          }
+    if(this.state.loggedIn == false){
+      var child = this.renderLogin()
+    }
 
 
-        if (this.state.errmsg){
-          var alert = <div className="alert alert-primary"><b>{this.state.errmsg}</b></div>;
-        }
+    if (this.state.errmsg){
+      var alert = <div className="alert alert-primary"><b>{this.state.errmsg}</b></div>;
+    }
 
     return (
     	<div className="container mainHero">
-        <img className="heroImage fade-in-fwd" src="images/uniconn.svg" alt="uniconn logo"/>
+      <img className="heroImage fade-in-fwd" src="images/uniconn.svg" alt="uniconn logo"/>
 
-          {alert}
-        <Link to="/login" className="btn  btn-lg themeButton">Login</Link>
-        <Link to="/register" className="btn  btn-lg themeButton">Register</Link>
-          {child}
-          {this.props.children}
-		  </div>
+      {alert}
+      <Link to="/login" className="btn  btn-lg themeButton">Login</Link>
+      <Link to="/register" className="btn  btn-lg themeButton">Register</Link>
+      {child}
+      {this.props.children}
+      </div>
 
 
       
-    );
+      );
   }
 
 };

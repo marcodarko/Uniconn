@@ -1,5 +1,3 @@
-
-var axios = require("axios");
 import React from 'react'
 import {
   BrowserRouter as Router,
@@ -9,12 +7,22 @@ import {
 
 export default class LoginForm extends React.Component{
 
+
+constructor(props) {
+  super(props);
+  this.state = {
+    username: "",
+    password: ""
+  };
+}
+
 getUsername(event){
 
   	this.setState({
   		username: event.target.value
   	})
 }
+
 getPassword(event){
 
   	this.setState({
