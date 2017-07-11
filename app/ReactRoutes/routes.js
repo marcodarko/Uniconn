@@ -5,10 +5,10 @@ import {
   Link, 
   Switch
 } from 'react-router-dom'
-
-// Include the Main Component
+// COMPONENTS
+import Header from '../components/Header';
+import MainIcon1 from '../components/MainIcon1';
 import Main  from "../components/Main";
-// Components
 import RegisterForm from '../components/RegisterForm';
 import LoginForm from '../components/LoginForm';
 
@@ -17,12 +17,11 @@ export default (
 
   // The high level component is the Router component
   <Router >
-    <div className="container">
-      <Switch>
-        <Route exact path="/" component={Main}/>
+    <div className="container-fluid">
+      <Header/>
         <Route path="/login" component={LoginForm}/>
         <Route path="/register" component={RegisterForm}/>
-      </Switch>
+        <Route path="/icon1" component={MainIcon1}/>
     </div>
   </Router>
   );

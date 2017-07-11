@@ -10,24 +10,27 @@ export default class LoginForm extends React.Component{
 
 constructor(props) {
   super(props);
-  this.state = {
-    username: "",
-    password: ""
-  };
+    this.state = {
+     username: "",
+     password: ""
+    };
+  this.getPassword = this.getPassword.bind(this);
+  this.getUsername = this.getUsername.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
 }
 
 getUsername(event){
 
-  	this.setState({
-  		username: event.target.value
-  	})
+	this.setState({
+		username: event.target.value
+	})
 }
 
 getPassword(event){
 
-  	this.setState({
-  		password: event.target.value
-  	})
+	this.setState({
+		password: event.target.value
+	})
 }
 
 handleSubmit(){

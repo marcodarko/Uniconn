@@ -68,12 +68,12 @@ html, body{
 	display: table;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(270deg, #8cf0d6, #8cdff0, #aa94f8, #f894e0, #f8cc94, #f8f494);
+/*	background: linear-gradient(270deg, #8cf0d6, #8cdff0, #aa94f8, #f894e0, #f8cc94, #f8f494);
 	background-size: 200% 200%;
 	-webkit-animation: uniconnMain 11s ease infinite;
 	-moz-animation: uniconnMain 11s ease infinite;
 	-o-animation: uniconnMain 11s ease infinite;
-	animation: uniconnMain 11s ease infinite;
+	animation: uniconnMain 11s ease infinite;*/
 }
 
 .mainHero{

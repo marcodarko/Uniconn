@@ -9,6 +9,23 @@ import {
 
 export default class RegisterForm extends React.Component{
 
+constructor(props) {
+  super(props);
+   this.state = {
+     username: "",
+     password1: "",
+     password2: "",
+     name: "",
+     email:""
+    };
+  this.getPassword1 = this.getPassword1.bind(this);
+  this.getPassword2 = this.getPassword2.bind(this);
+  this.getEmail = this.getEmail.bind(this);
+  this.getName = this.getName.bind(this);
+  this.getUsername = this.getUsername.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+}
+
 getName(event){
 
   	this.setState({
