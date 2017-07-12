@@ -47,14 +47,14 @@ export default class Header extends React.Component {
 
   render() {
     return (
-	      <nav className="navbar navbar-inverse">
+	      <nav className="navbar navbar-inverse backPurple noBorder">
 		  	  <div className="container-fluid">
 			    <div className="navbar-header">
 			      <NavLink className="navbar-brand" to="/">
-			        UniConn
+			        <img src='./images/uniconn.png' alt="logo home" width="110px"/>
 			      </NavLink>
 			    </div>	
-			    <form className="navbar-form navbar-right" onSubmit={this.handleSubmit}>		   
+			    <form className="navbar-form navbar-right noBorder" onSubmit={this.handleSubmit}>		   
 			     <MainIcon1 getLocation={this.getLocation} locationMSG={this.state.locationMSG}/>
 			    </form>		   
 			  </div>

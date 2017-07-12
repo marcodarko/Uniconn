@@ -9,9 +9,9 @@ export default class ResultItem extends React.Component {
 
   render() {
     return (
-      <div className="col-sm-12 col-md-4 col-lg-2">
-      	<img src={this.props.photo || "https://www.atomix.com.au/media/2015/06/atomix_user31.png" } style={{borderRadius:'100%', width:'50px'}}/>
-      	<p>{this.props.name}</p>
+      <div className="col-sm-12 col-md-3 col-lg-2 resultItemBox">
+      	<img src={this.props.photo || "https://emojipedia-us.s3.amazonaws.com/thumbs/120/apple/96/unicorn-face_1f984.png" }/>
+      	<h5>{this.props.name}</h5>
       	<p>{this.props.username}</p>
       </div>
     );

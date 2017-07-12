@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import LocationBox from '../components/LocationBox';
 import Results from '../components/Results';
+import Divider from '../components/Divider';
 
 export default class Home extends React.Component {
 
@@ -26,6 +27,7 @@ export default class Home extends React.Component {
     return (
       <div className="container col-sm-12 col-md-12 col-lg-12 row">
       	<Header sendLocationToHome={this.sendLocationToHome}/> 
+      	<Divider/>
       	<LocationBox userLat={this.state.userLat} userLong={this.state.userLong}/> 
       	<Results userLat={this.state.userLat} userLong={this.state.userLong}/>	
       </div>
