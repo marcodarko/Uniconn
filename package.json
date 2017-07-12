@@ -28,6 +28,7 @@
     "express-session": "^1.15.3",
     "express-validator": "^3.2.0",
     "fbjs": "^0.8.12",
+    "geolib": "^2.0.22",
     "gsap": "^1.20.2",
     "kute.js": "^1.6.2",
     "method-override": "^2.3.9",

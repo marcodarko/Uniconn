@@ -20,7 +20,7 @@ export default class Header extends React.Component {
   }
 
   getLocation(){
-    	console.log("this is happening");
+    	//console.log("this is happening");
   	 	navigator.geolocation.getCurrentPosition( (location,err) =>{
 
   	 		if(location){
@@ -42,7 +42,7 @@ export default class Header extends React.Component {
 
   	});
 
-  	console.log(this.state);
+  	//console.log(this.state);
   }
 
   render() {

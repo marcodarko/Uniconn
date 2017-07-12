@@ -37,7 +37,7 @@ app.use(methodOverride("_method"));
 // -------------------------------------------------
 
 // MongoDB configuration (Change this URL to your own DB)
-mongoose.connect("mongodb://localhost/zoo");
+mongoose.connect("mongodb://localhost/uniconn2");
 var db = mongoose.connection;
 
 db.on("error", function(err) {

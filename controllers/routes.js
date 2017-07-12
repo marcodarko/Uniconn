@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/User');
+var users = require('../models/User');
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -18,6 +18,15 @@ function ensureAuthenticated(req, res, next){
 		res.redirect('/');
 	}
 }
+
+router.get('/api/find-all', function(req, res) {
+
+	users.find({}, (err,docs)=>{
+		if(err) res.send(err);
+		return res.send(docs);
+	})
+	
+});
 
 
 router.post('/register', function(req, res){

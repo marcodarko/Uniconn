@@ -16,10 +16,25 @@ var UserSchema = mongoose.Schema({
 	},
 	name: {
 		type: String
+	},
+	latitude:{
+		type: String
+	},
+	longitude:{
+		type: String
+	},
+	blocked:{
+		type: Array
+	},
+	friends:{
+		type: Array
+	},
+	photo:{
+		type: String
 	}
-});
+}, { collection: 'users' });
 
-var User = module.exports = mongoose.model('User', UserSchema);
+var users = module.exports = mongoose.model('users', UserSchema);
 
 module.exports.createUser = function(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {
