@@ -398,11 +398,48 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
 
 .themeButton2:focus{ 
   background-color: transparent;
-  padding: 5px;
+  padding: 10px;
   border-radius: 7px;
   border: 2px solid hotpink;
   text-decoration: none;
   color: hotpink;
+}
+
+.connButton{ 
+  background-color: #323232;
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  text-decoration: none;
+  color: white;
+  box-shadow: 2px 2px 3px violet;
+}
+
+.connButton:hover{ 
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ea59de+0,ffc9a3+100&0.8+1,0.8+100 */
+background: -moz-linear-gradient(top, rgba(234,89,222,0.8) 0%, rgba(234,90,221,0.8) 1%, rgba(255,201,163,0.8) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(234,89,222,0.8) 0%,rgba(234,90,221,0.8) 1%,rgba(255,201,163,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(234,89,222,0.8) 0%,rgba(234,90,221,0.8) 1%,rgba(255,201,163,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccea59de', endColorstr='#ccffc9a3',GradientType=0 ); /* IE6-9 */
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0px 0px 2px lightblue;
+}
+
+.connButton:focus{ 
+ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffc063+0,ffa3a3+100&0.8+1,0.8+100 */
+background: -moz-linear-gradient(top, rgba(255,192,99,0.8) 0%, rgba(255,192,100,0.8) 1%, rgba(255,163,163,0.8) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,192,99,0.8) 0%,rgba(255,192,100,0.8) 1%,rgba(255,163,163,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,192,99,0.8) 0%,rgba(255,192,100,0.8) 1%,rgba(255,163,163,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffc063', endColorstr='#ccffa3a3',GradientType=0 ); /* IE6-9 */
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  text-decoration: none;
+  color: white;
 }
 
 .purpleBack{
@@ -535,18 +572,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
 }
 
 .resultItemBox{
-  margin:10px;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
     background-color: white;
     box-shadow: 3px 3px 6px #a807c7;
-    opacity: .7;
+    opacity: .9;
 }
 
 .resultItemBox:hover{
-  margin:10px;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
     background-color: white;
@@ -560,6 +595,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
   padding: 5px;
   box-shadow: 2px 2px 4px lightblue;
 
+}
+
+.resContainer{
+  margin-bottom: 10px;
 }
 
 .heroImg{

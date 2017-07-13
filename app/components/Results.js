@@ -74,8 +74,9 @@ export default class Results extends React.Component {
 		    {latitude: parseFloat(doc.latitude), longitude: parseFloat(doc.longitude)}
 			);
 			console.log(res);
+			let distance = res/3.28084;
 
-	    	return <ResultItem key={index} photo={doc.photo} name={doc.name} username={doc.username}/>
+	    	return <ResultItem key={index} feetAway={distance.toFixed(2)} photo={doc.photo} name={doc.name} username={doc.username}/>
 	    })}
 	    </div>
 	    <hr/>
