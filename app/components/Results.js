@@ -56,6 +56,9 @@ export default class Results extends React.Component {
     return (
       <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder">
 	  <div className="panel-body text-center">
+	  	{!this.props.userLong && <div className="alert alert-warning yellowBack noBorder whiteText heartbeat" role="alert">
+		  <strong>Location Needed to Find Friends</strong>
+		</div>}
 	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success alert-dismissable greenBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
@@ -66,7 +69,7 @@ export default class Results extends React.Component {
 		</div>}
 	    <br/>
 	    <div className="row text-center">
-	    {!this.props.userLong && <img src="./images/uniconn.png" width="50%" alt="results logo" className="jello-horizontal"/>}
+	    {!this.props.userLong && <img style={{borderRadius:"20px"}} src="./images/homeHero.jpg" width="80%" alt="home image uniconn" className="jello-horizontal"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
 
 	    	let res= geolib.getDistance(
@@ -82,9 +85,7 @@ export default class Results extends React.Component {
 	    <hr/>
 	    <div className='row'>
 	    {this.props.userLong && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}>Find Friends</button>}
-	    {!this.props.userLong && <div className="alert alert-warning yellowBack noBorder whiteText heartbeat" role="alert">
-		  <strong>Location Needed to Find Friends</strong>
-		</div>}
+	    
 		</div>
 	  </div>
 	</div>
