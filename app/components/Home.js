@@ -31,6 +31,7 @@ export default class Home extends React.Component {
       	<Divider/>
       	<LocationBox userLat={this.state.userLat} userLong={this.state.userLong}/> 
       	<Results userLat={this.state.userLat} userLong={this.state.userLong}/>
+      	<Divider/>
       	<LoginForm/>	
       </div>
     );

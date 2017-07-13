@@ -69,7 +69,7 @@ export default class Results extends React.Component {
 		</div>}
 	    <br/>
 	    <div className="row text-center">
-	    {!this.props.userLong && <img style={{borderRadius:"20px"}} src="./images/homeHero.jpg" width="80%" alt="home image uniconn" className="jello-horizontal"/>}
+	    {!this.props.userLong && <img style={{borderRadius:"20px"}} src="./images/homeHero.jpg" width="90%" alt="home image uniconn" className="jello-horizontal"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
 
 	    	let res= geolib.getDistance(
@@ -84,7 +84,8 @@ export default class Results extends React.Component {
 	    </div>
 	    <hr/>
 	    <div className='row'>
-	    {this.props.userLong && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}>Find Friends</button>}
+	    {this.props.userLong && <h2 className="whiteText">Find Friends</h2>}
+	    {this.props.userLong && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}
 	    
 		</div>
 	  </div>

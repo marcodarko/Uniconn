@@ -48,11 +48,12 @@ export default class Header extends React.Component {
   render() {
     return (
 	      <nav className="navbar navbar-inverse backPurple noBorder">
-		  	  <div className="container-fluid">
+		  	  <div className="container-fluid text-center">
 			    <div className="navbar-header">
 			      <NavLink className="navbar-brand" to="/">
 			        <img src='./images/uniconn.png' alt="logo home" width="110px"/>
 			      </NavLink>
+            <p className="navbar-text navbar-left whiteText">Turn on your Gaydar</p>
 			    </div>	
 			    <form className="navbar-form navbar-right noBorder" onSubmit={this.handleSubmit}>		   
 			     <MainIcon1 getLocation={this.getLocation} locationMSG={this.state.locationMSG}/>

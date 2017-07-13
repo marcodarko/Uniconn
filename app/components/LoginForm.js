@@ -54,11 +54,11 @@ handleSubmit(){
 			<form >
 			  <div className="form-group">
 			    <label className="purpleText">Username</label>
-			    <input style={{width:'50%', margin:'auto'}} type="text" className="form-control inputBack" name="username" placeholder="Username" required onChange={this.getUsername}></input>
+			    <input style={{width:'70%', margin:'auto'}} type="text" className="form-control inputBack" name="username" placeholder="Username" required onChange={this.getUsername}></input>
 			  </div>
 			  <div className="form-group">
 			    <label className="purpleText">Password</label>
-			    <input style={{width:'50%', margin:'auto'}} type="password" className="form-control inputBack" name="password" placeholder="Password" required onChange={this.getPassword}></input>
+			    <input style={{width:'70%', margin:'auto'}} type="password" className="form-control inputBack" name="password" placeholder="Password" required onChange={this.getPassword}></input>
 			  </div>
 			  <button type="button" className="btn themeButton" onClick={this.handleSubmit} >Submit</button>
 			</form>

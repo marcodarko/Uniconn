@@ -20,14 +20,24 @@ export default class LocationBox extends React.Component {
 
  //  }
 
+
+
   render() {
     return (
      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backBlue noBorder whiteText">
-	  <div className="panel-body text-center">
-	    <span style={{color:'#087dca'}}>UserLat:</span> {this.props.userLat}
-	    <br/>
-	    <span style={{color:'#087dca'}}>UserLong:</span> {this.props.userLong}
-	  </div>
+	    <div className="panel-body text-center row">
+	  		<div className="col-sm-4 col-md-4 col-lg-4 col-xs-4 text-center">
+				 <img src='./images/flamingo.png' alt='flamingo' width="50px"/>
+			</div>
+			<div className="col-sm-4 col-md-4 col-lg-4 col-xs-4 text-center">
+			    <span style={{color:'#087dca'}}>UserLat:</span> {this.props.userLat}
+			    <br/>
+			    <span style={{color:'#087dca'}}>UserLong:</span> {this.props.userLong}
+			</div>
+			<div className="col-sm-4 col-md-4 col-lg-4 col-xs-4 text-center">
+				 <img src='./images/pastelKiss.png' alt='flamingo' width="50px"/>
+			</div>
+		</div>
 	</div>
     );
   }
