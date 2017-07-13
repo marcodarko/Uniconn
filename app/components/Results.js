@@ -56,15 +56,17 @@ export default class Results extends React.Component {
     return (
       <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder">
 	  <div className="panel-body text-center">
-	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success greenBack noBorder purpleText" role="alert">
+	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success alert-dismissable greenBack noBorder whiteText" role="alert">
+		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
 		</div>}
-		{this.state.resMSG === "No One Near You :(" && <div className="alert alert-danger pinkBack noBorder purpleText" role="alert">
+		{this.state.resMSG === "No One Near You :(" && <div className="alert alert-danger alert-dismissable pinkBack noBorder whiteText" role="alert">
+		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
 		</div>}
 	    <br/>
 	    <div className="row text-center">
-	    {!this.props.userLong && <img src="./images/uniconn.png" width="50%" alt="results logo"/>}
+	    {!this.props.userLong && <img src="./images/uniconn.png" width="50%" alt="results logo" className="jello-horizontal"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
 
 	    	let res= geolib.getDistance(
@@ -78,8 +80,8 @@ export default class Results extends React.Component {
 	    </div>
 	    <hr/>
 	    <div className='row'>
-	    {this.props.userLong && <button className="btn themeButton" type='button' onClick={this.handleClick}>Find Friends</button>}
-	    {!this.props.userLong && <div className="alert alert-warning yellowBack noBorder whiteText" role="alert">
+	    {this.props.userLong && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}>Find Friends</button>}
+	    {!this.props.userLong && <div className="alert alert-warning yellowBack noBorder whiteText heartbeat" role="alert">
 		  <strong>Location Needed to Find Friends</strong>
 		</div>}
 		</div>

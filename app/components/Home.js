@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import LocationBox from '../components/LocationBox';
 import Results from '../components/Results';
 import Divider from '../components/Divider';
+import LoginForm from '../components/LoginForm';
 
 export default class Home extends React.Component {
 
@@ -29,7 +30,8 @@ export default class Home extends React.Component {
       	<Header sendLocationToHome={this.sendLocationToHome}/> 
       	<Divider/>
       	<LocationBox userLat={this.state.userLat} userLong={this.state.userLong}/> 
-      	<Results userLat={this.state.userLat} userLong={this.state.userLong}/>	
+      	<Results userLat={this.state.userLat} userLong={this.state.userLong}/>
+      	<LoginForm/>	
       </div>
     );
   }
