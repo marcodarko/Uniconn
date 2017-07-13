@@ -69,7 +69,7 @@ export default class Results extends React.Component {
 		</div>}
 	    <br/>
 	    <div className="row text-center">
-	    {!this.props.userLong && <img style={{borderRadius:"20px"}} src="./images/homeHero.jpg" width="90%" alt="home image uniconn" className="jello-horizontal"/>}
+	    {!this.props.userLong && <img style={{borderRadius:"20px"}} src="./images/homeHero.jpg" width="70%" alt="home image uniconn" className="jello-horizontal"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
 
 	    	let res= geolib.getDistance(
