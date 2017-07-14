@@ -5,6 +5,8 @@ import {
   Link
 } from 'react-router-dom'
 
+import RegisterForm from './RegisterForm';
+
 export default class LoginForm extends React.Component{
 
 
@@ -12,11 +14,16 @@ constructor(props) {
   super(props);
     this.state = {
      username: "",
-     password: ""
+     password: "",
+     action:''
     };
   this.getPassword = this.getPassword.bind(this);
   this.getUsername = this.getUsername.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.renderLogin = this.renderLogin.bind(this);
+  this.renderRegistration = this.renderRegistration.bind(this);
+  this.actionLogin = this.actionLogin.bind(this);
+  this.actionRegister = this.actionRegister.bind(this);
 }
 
 getUsername(event){
@@ -42,13 +49,8 @@ handleSubmit(){
 
 }
 
-  // Here we render the function
-  render() {
-
-
-    return (
-
-    	<div className="jumbotron col-sm-12 col-m-12 col-lg-12 backGreen text-center">
+renderLogin(){
+	return(<div>
     		<img className="heroImg" src="./images/hero.jpg" alt="hero uniconn"/>
     		<br/>
 			<form >
@@ -62,6 +64,40 @@ handleSubmit(){
 			  </div>
 			  <button type="button" className="btn themeButton" onClick={this.handleSubmit} >Submit</button>
 			</form>
+		</div>)
+}
+
+renderRegistration(){
+	return <RegisterForm/>
+}
+
+actionLogin(){
+	this.setState({
+		action:'login'
+	})
+}
+
+actionRegister(){
+	this.setState({
+		action:'register'
+	})
+}
+  // Here we render the function
+  render() {
+
+
+    return (
+
+    	<div className="jumbotron col-sm-12 col-m-12 col-lg-12 row backGreen text-center">
+    		<div className="col-sm-6 col-md-6 col-lg-6 col-xs-6 col-xl-6">
+    			<button type="button" className="btn connButton" onClick={this.actionLogin}>Log In</button>
+    		</div>
+    		<div className="col-sm-6 col-md-6 col-lg-6 col-xs-6 col-xl-6">
+    			<button type="button" className="btn connButton" onClick={this.actionRegister}>New User</button>
+    		</div>
+        <hr/>
+    		{this.state.action ==="login" && this.renderLogin()}
+    		{this.state.action ==="register" && this.renderRegistration()}
 		</div>
     );
   }

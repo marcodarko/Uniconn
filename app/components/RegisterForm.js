@@ -74,31 +74,73 @@ handleSubmit(){
 
 }
 
+
   // Here we render the function
   render() {
 
     return (
 
-    	<div className="container">
-    	<Link to="/" className="btn  btn-lg themeButton">Back</Link>
+    	<div className="container registerContainer row">
+      <h3 className="whiteText">New User Registration</h3>
+      <hr/>
 			<form>
-			   <div className="form-group">
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>photo</label>
+          <input type="file" className="form-control inputBack" placeholder="Username" name="username" required onChange={this.getUsername}></input>
+        </div>
+			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Name</label>
 			    <input type="text" className="form-control inputBack" placeholder="Name" name="name" required onChange={this.getName}></input>
 			  </div>
-			  <div className="form-group">
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>Age</label>
+          <input type="text" className="form-control inputBack" placeholder="Age" name="age" required onChange={this.getAge}></input>
+        </div>
+        <div className="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+          <label htmlFor="male">Male</label>
+          <input id="male" type="radio" className="form-control inputBack" name="gender" required onChange={this.getGenderM}></input> 
+        </div>
+        <div className="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+          <label htmlFor="female">Female</label>
+          <input id="female" type="radio" className="form-control inputBack" name="gender" required onChange={this.getGenderF}></input>
+        </div>
+         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>Here For</label>
+          <br/>
+          <select>
+            <option>Friends</option>
+            <option>Dating</option>
+            <option>Whatever</option>
+          </select>
+        </div>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>Sexual Identity</label>
+          <br/>
+          <select>
+            <option>Gay</option>
+            <option>Bi</option>
+            <option>Lesbian</option>
+            <option>Trans</option>
+            <option>GenderQueer</option>
+            <option>Non-Binary</option>
+            <option>Androgenous</option>
+            <option>Fluid</option>
+            <option>Unicorn</option>
+          </select>
+        </div>
+			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Username</label>
 			    <input type="text" className="form-control inputBack" placeholder="Username" name="username" required onChange={this.getUsername}></input>
 			  </div>
-			   <div className="form-group">
+			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Email</label>
 			    <input type="email" className="form-control inputBack" placeholder="Email" name="email" required onChange={this.getEmail}></input>
 			  </div>
-			  <div className="form-group">
+			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Password</label>
 			    <input type="password" className="form-control inputBack" placeholder="Password" name="password" required onChange={this.getPassword1}></input>
 			  </div>
-			  <div className="form-group">
+			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Confirm Password</label>
 			    <input type="password" className="form-control inputBack" placeholder="Password" name="password2" required onChange={this.getPassword2}></input>
 			  </div>

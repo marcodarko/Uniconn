@@ -31,6 +31,15 @@ var UserSchema = mongoose.Schema({
 	},
 	photo:{
 		type: String
+	},
+	gender:{
+		type: String
+	},
+	age:{
+		type: String
+	},
+	herefor:{
+		type: String
 	}
 }, { collection: 'users' });
 

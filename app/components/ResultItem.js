@@ -20,10 +20,10 @@ export default class ResultItem extends React.Component {
         	<p>@{this.props.username}</p>
           <div className="row">
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
-              <button type="button" className="btn wink"><span style={{color:'#76399e'}} className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Wink</button>
+              <button type="button" className="btn wink"><span style={{color:'#76399e'}} className="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Block</button>
             </div>
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
-              <button type="button" className="btn hot"><span style={{color:'#ff6427'}} className="glyphicon glyphicon-fire" aria-hidden="true"></span> Hot</button>
+              <button type="button" className="btn hot"><span style={{color:'hotpink'}} className="glyphicon glyphicon-star" aria-hidden="true"></span> Fave</button>
             </div>
           </div>
           <hr/>
