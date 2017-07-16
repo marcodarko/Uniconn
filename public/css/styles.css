@@ -16,6 +16,14 @@ body{
   cursor: url('./uniicon.ico'),default;
 }
 
+select{
+  background-color: #3ac594;
+  color: white;
+  padding: 10px;
+  border: none;
+}
+
+
 #profilePhoto{
   width: 40%;
   border-radius: 10px;

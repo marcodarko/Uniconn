@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import MainIcon1 from './MainIcon1';
 
 export default class RegisterForm extends React.Component{
 
@@ -13,10 +14,19 @@ constructor(props) {
   super(props);
    this.state = {
      username: "",
+     password:'',
      password1: "",
      password2: "",
      name: "",
-     email:""
+     age:'',
+     email:"",
+     identity: 'gay',
+     herefor:'friends',
+     passwordMSG:"",
+     submitMSG:'',
+     latitude:'',
+     longitude: '',
+      locationMSG: "Get Location"
     };
   this.getPassword1 = this.getPassword1.bind(this);
   this.getPassword2 = this.getPassword2.bind(this);
@@ -24,56 +34,176 @@ constructor(props) {
   this.getName = this.getName.bind(this);
   this.getUsername = this.getUsername.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.getIdentity = this.getIdentity.bind(this);
+  this.getHereFor = this.getHereFor.bind(this);
+  this.comparePasswords = this.comparePasswords.bind(this);
+  this.getAge = this.getAge.bind(this);
+  this.checkState = this.checkState.bind(this);
+  this.getLocation = this.getLocation.bind(this);
 }
 
 getName(event){
 
   	this.setState({
-  		name: event.target.value
+  		name: event.target.value.toLowerCase()
   	})
+
 }
 getUsername(event){
 
   	this.setState({
-  		username: event.target.value
+  		username: event.target.value.toLowerCase()
   	})
+
+
 }
 getEmail(event){
 
   	this.setState({
-  		email: event.target.value
+  		email: event.target.value.toLowerCase()
   	})
-}
-getPassword1(event){
 
+}
+getIdentity(event){
+
+    this.setState({
+      identity: event.target.value
+    })
+
+}
+
+getAge(event){
+    this.setState({
+      age: event.target.value.trim()
+    });
+
+}
+getHereFor(event){
+
+    this.setState({
+      herefor: event.target.value
+    });
+
+}
+
+getPassword1(event){
+    let pass1 = event.target.value.trim();
+    //console.log(pass1);
   	this.setState({
-  		password1: event.target.value
-  	})
+  		password1: pass1
+  	});
+    
+    
 }
 getPassword2(event){
-
+    let pass2 = event.target.value.trim();
+    //console.log(pass2);
   	this.setState({
-  		password2: event.target.value
-  	})
+  		password2: pass2
+  	});
+
 }
+
+comparePasswords(pass1, pass2){
+
+    if (pass1 !== pass2){
+      this.setState({
+      passwordMSG: "Passwords Must Match"
+       });
+      return false;
+    }
+    else if(pass1 === pass2){
+      this.setState({
+      passwordMSG: "Passwords Match",
+      password: pass1
+       });
+
+      return true;
+    }
+}
+
+checkState(){
+  if( this.state.name &&
+    this.state.username &&
+    this.state.age &&
+    this.state.password1 && 
+    this.state.password2 &&
+    this.state.herefor &&
+    this.state.identity &&
+    this.state.latitude &&
+    this.state.longitude){
+    return true;
+  }
+  else{
+    this.setState({
+    submitMSG:"All fields must be filled out"
+    });
+    return false;
+  }
+}
+
 handleSubmit(){
 
-	if(this.state.password1 === this.state.password2){
+  var passwordComparison = this.comparePasswords(this.state.password1, this.state.password2);
+  var everythingFilledOut = this.checkState();
 
-	let Rnew_name = this.state.name;
-	let Rnew_email = this.state.email;
-	let Rnew_username = this.state.username;
-	let Rnew_password = this.state.password1;
+ if( passwordComparison && everythingFilledOut ){
+  var newUserInfo={
+    name: this.state.name,
+    username: this.state.username,
+    age: this.state.age,
+    email: this.state.email,
+    password: this.state.password1,
+    herefor: this.state.herefor,
+    identity: this.state.identity,
+    latitude: this.state.latitude,
+    longitude: this.state.longitude
+  }
 
-	this.props.registerNewUser(Rnew_name, Rnew_email, Rnew_username, Rnew_password);
+  axios.post('/register', newUserInfo).then(res=>{
 
-	}
-	else{
-		alert("passwords must match");
-	}
+    console.log("registration res", res.data);
+    this.setState({
+    submitMSG:"Success"
+    });
+
+  }).catch(err=>{
+    this.setState({
+    submitMSG:"Invalid Information"
+    });
+  })
+
+ }else{
+  this.setState({
+    submitMSG:"Check User Info"
+  });
+ }
 
 }
 
+ getLocation(){
+      //console.log("this is happening");
+      navigator.geolocation.getCurrentPosition( (location,err) =>{
+
+        if(location){
+          let locationLatitude= location.coords.latitude;
+          let locationLongitude= location.coords.longitude;
+          this.setState({
+            latitude: locationLatitude,
+            longitude: locationLongitude,
+            locationMSG: "Location Found"
+          });
+        }
+        else{
+          this.setState({
+            locationMSG:"Location Not Found"
+          })
+        }
+
+    });
+
+    //console.log(this.state);
+  }
 
   // Here we render the function
   render() {
@@ -84,10 +214,7 @@ handleSubmit(){
       <h3 className="whiteText">New User Registration</h3>
       <hr/>
 			<form>
-        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <label>photo</label>
-          <input type="file" className="form-control inputBack" placeholder="Username" name="username" required onChange={this.getUsername}></input>
-        </div>
+       
 			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Name</label>
 			    <input type="text" className="form-control inputBack" placeholder="Name" name="name" required onChange={this.getName}></input>
@@ -96,36 +223,34 @@ handleSubmit(){
           <label>Age</label>
           <input type="text" className="form-control inputBack" placeholder="Age" name="age" required onChange={this.getAge}></input>
         </div>
-        <div className="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-          <label htmlFor="male">Male</label>
-          <input id="male" type="radio" className="form-control inputBack" name="gender" required onChange={this.getGenderM}></input> 
-        </div>
-        <div className="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-          <label htmlFor="female">Female</label>
-          <input id="female" type="radio" className="form-control inputBack" name="gender" required onChange={this.getGenderF}></input>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <label>Set Location</label><br/>
+          <MainIcon1 getLocation={this.getLocation} locationMSG={this.state.locationMSG}/>
         </div>
          <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Here For</label>
           <br/>
-          <select>
-            <option>Friends</option>
-            <option>Dating</option>
-            <option>Whatever</option>
+          <select onChange={this.getHereFor}>
+            <option value="" disabled >Choose your option</option>
+            <option value="friends">Friends</option>
+            <option value="dating">Dating</option>
+            <option value="whatever">Whatever</option>
           </select>
         </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Sexual Identity</label>
           <br/>
-          <select>
-            <option>Gay</option>
-            <option>Bi</option>
-            <option>Lesbian</option>
-            <option>Trans</option>
-            <option>GenderQueer</option>
-            <option>Non-Binary</option>
-            <option>Androgenous</option>
-            <option>Fluid</option>
-            <option>Unicorn</option>
+          <select onChange={this.getIdentity}>
+            <option value="" disabled >Choose your option</option>
+            <option value="gay">Gay</option>
+            <option value="bi">Bi</option>
+            <option value="lesbian">Lesbian</option>
+            <option value="transgender">Transgender</option>
+            <option value="genderqueer">GenderQueer</option>
+            <option value="non-binary">Non-Binary</option>
+            <option value="androgenous">Androgenous</option>
+            <option value="fluid">Fluid</option>
+            <option value="unicorn">Unicorn</option>
           </select>
         </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -138,13 +263,19 @@ handleSubmit(){
 			  </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Password</label>
-			    <input type="password" className="form-control inputBack" placeholder="Password" name="password" required onChange={this.getPassword1}></input>
+			    <input type="password" className="form-control inputBack" placeholder="Password" name="password1" required onChange={this.getPassword1}></input>
 			  </div>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <span style={{color: this.state.passwordMSG === "Passwords Match" ? '#00db8e': "#ff6464"}}>{this.state.passwordMSG}</span>
+        </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Confirm Password</label>
-			    <input type="password" className="form-control inputBack" placeholder="Password" name="password2" required onChange={this.getPassword2}></input>
+			    <input type="password" className="form-control inputBack" placeholder="Confirm Password" name="password2" required onChange={this.getPassword2}></input>
 			  </div>
 			  <button type="button" onClick={this.handleSubmit} className="btn btn-lg themeButton">Submit</button>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+        <h3 style={{color: this.state.submitMSG === "Success" ? '#00db8e': "#ff6464"}}>{this.state.submitMSG}</h3>
+       </div>
 			</form>
 		</div>
     );

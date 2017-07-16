@@ -10,29 +10,27 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-    	userLat: '',
-  		userLong: ''
+      user:{}
     }
-    this.sendLocationToHome = this.sendLocationToHome.bind(this);
+    this.sendUserToHome = this.sendUserToHome.bind(this);
   }
 
-  sendLocationToHome(Lat, Long){
+  sendUserToHome(newuser){
   	this.setState({
-  		userLat: Lat,
-  		userLong: Long
+  		user: newuser
   	});
-  	console.log('USER LOCATION', this.state);
+  	console.log('HOME USER INFO', this.state);
   }
 
   render() {
     return (
       <div className="container col-sm-12 col-md-12 col-lg-12 row">
-      	<Header sendLocationToHome={this.sendLocationToHome}/> 
+      	<Header/> 
       	<Divider/>
-      	<LocationBox userLat={this.state.userLat} userLong={this.state.userLong}/> 
-      	<Results userLat={this.state.userLat} userLong={this.state.userLong}/>
+      	<LocationBox user={this.state.user}/> 
+      	<Results user={this.state.user}/>
       	<Divider/>
-      	<LoginForm/>	
+      	<LoginForm user={this.state.user} sendUserToHome={this.sendUserToHome}/>	
       </div>
     );
   }

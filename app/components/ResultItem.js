@@ -14,7 +14,7 @@ export default class ResultItem extends React.Component {
           <div className="backPurple whiteText" style={{padding:'5px', borderRadius:'10px'}}>
             <span style={{color:'hotpink'}} className="glyphicon glyphicon-screenshot" aria-hidden="true"></span> <strong>{this.props.feetAway}</strong> feet away
           </div>
-          {this.props.feetAway < 3000000 && <div className="heartbeat"><span style={{color:'hotpink'}} className="glyphicon glyphicon-star" aria-hidden="true"></span> <strong style={{color:'hotpink'}}>Super Close</strong></div> || <div><span className="glyphicon glyphicon-plane" aria-hidden="true"></span> Far Far Away</div> }
+          {this.props.feetAway < 500 && <div className="heartbeat"><span style={{color:'hotpink'}} className="glyphicon glyphicon-star" aria-hidden="true"></span> <strong style={{color:'hotpink'}}>Super Close</strong></div> || <div><span className="glyphicon glyphicon-plane" aria-hidden="true"></span> Far Far Away</div> }
         	<img src={this.props.photo || "./images/default.png" }/>
         	<h5>{this.props.name}</h5>
         	<p>@{this.props.username}</p>
