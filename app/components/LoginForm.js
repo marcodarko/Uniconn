@@ -15,7 +15,6 @@ constructor(props) {
     this.state = {
      username: "",
      password: "",
-     action:'',
      loginMSG:''
     };
   this.getPassword = this.getPassword.bind(this);
@@ -23,8 +22,7 @@ constructor(props) {
   this.handleSubmit = this.handleSubmit.bind(this);
   this.renderLogin = this.renderLogin.bind(this);
   this.renderRegistration = this.renderRegistration.bind(this);
-  this.actionLogin = this.actionLogin.bind(this);
-  this.actionRegister = this.actionRegister.bind(this);
+
 }
 
 getUsername(event){
@@ -53,9 +51,9 @@ handleSubmit(){
 	axios.post('/login', loginInfo).then(res=>{
     console.log("login successful", res.data);
     this.setState({
-      loginMSG: "Logged In",
-      action: "loggedin"
+      loginMSG: "Logged In"
     })
+     this.props.logged();
      this.props.sendUserToHome(res.data);
 
   }).catch(err=>{
@@ -68,8 +66,7 @@ handleSubmit(){
 
 renderLogin(){
 	return(<div>
-    		<img className="heroImg" src="./images/hero.jpg" alt="hero uniconn"/>
-    		<br/>
+          <h3 className="whiteText">Welcome Back</h3>
 			<form >
 			  <div className="form-group">
 			    <label className="purpleText">Username</label>
@@ -79,7 +76,7 @@ renderLogin(){
 			    <label className="purpleText">Password</label>
 			    <input style={{width:'70%', margin:'auto'}} type="password" className="form-control inputBack" name="password" placeholder="Password" required onChange={this.getPassword}></input>
 			  </div>
-			  <button type="button" className="btn themeButton" onClick={this.handleSubmit} >Submit</button>
+			  <button type="button" className="btn loginButton" onClick={this.handleSubmit} >Submit</button>
         <br/>
         <h4 style={{color: this.state.loginMSG === "Logged In" ? 'white' : 'red'}}><span>{this.state.loginMSG}</span></h4>
 			</form>
@@ -90,34 +87,16 @@ renderRegistration(){
 	return <RegisterForm/>
 }
 
-actionLogin(){
-	this.setState({
-		action:'login'
-	})
-}
-
-actionRegister(){
-	this.setState({
-		action:'register'
-	})
-}
   // Here we render the function
   render() {
 
 
     return (
 
-    	<div className="jumbotron col-sm-12 col-m-12 col-lg-12 row backOrange text-center">
-    		{!this.props.user.name &&<div className="col-sm-6 col-md-6 col-lg-6 col-xs-6 col-xl-6">
-          <button type="button" className="btn connButton" onClick={this.actionLogin}>Log In</button>
-        </div>}
-    		{!this.props.user.name &&<div className="col-sm-6 col-md-6 col-lg-6 col-xs-6 col-xl-6">
-    			<button type="button" className="btn connButton" onClick={this.actionRegister}>New User</button>
-    		</div>}
-        <hr/>
-    		{this.state.action ==="login" && this.renderLogin()}
-    		{this.state.action ==="register" && this.renderRegistration()}
-        {this.state.action === 'loggedin' && <h5 className="whiteText">Welcome!</h5>}
+    	<div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  col-xl-12 backOrange text-center" style={{padding:'5px'}}>
+    		{this.props.action ==="login" && this.renderLogin()}
+    		{this.props.action ==="register" && this.renderRegistration()}
+        {this.props.action === 'logged' && <p className="purpleText">Hello, <strong>{this.props.user.username}</strong></p>}
 		</div>
     );
   }

@@ -272,7 +272,7 @@ handleSubmit(){
 			    <label>Confirm Password</label>
 			    <input type="password" className="form-control inputBack" placeholder="Confirm Password" name="password2" required onChange={this.getPassword2}></input>
 			  </div>
-			  <button type="button" onClick={this.handleSubmit} className="btn btn-lg themeButton">Submit</button>
+			  <button type="button" onClick={this.handleSubmit} className="btn btn-lg loginButton">Submit</button>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
         <h3 style={{color: this.state.submitMSG === "Success" ? '#00db8e': "#ff6464"}}>{this.state.submitMSG}</h3>
        </div>

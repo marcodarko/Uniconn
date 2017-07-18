@@ -19,12 +19,12 @@ export default class Results extends React.Component {
 
     	 axios.get('/api/find-all').then( res=>{
 
-			console.log("API res",res.data);
+			//console.log("API res",res.data);
 			this.setState({
 				resMSG: "We Found Some Peeps :)",
 				results: res.data
 			})
-			console.log("state results",this.state.results);
+			//console.log("state results",this.state.results);
 
 		}).catch(err=>{
 			this.setState({
@@ -57,13 +57,11 @@ export default class Results extends React.Component {
 		    {latitude: parseFloat(this.props.user.latitude), longitude: parseFloat(this.props.user.longitude)},
 		    {latitude: parseFloat(doc.latitude), longitude: parseFloat(doc.longitude)}
 			);
-			console.log(res);
 			let distance = res/3.28084;
 
-	    	return <ResultItem key={index} feetAway={distance.toFixed(2)} photo={doc.photo} name={doc.name} username={doc.username}/>
+	    	return <ResultItem userID={this.props.user._id} key={index} feetAway={distance.toFixed(2)} photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
 	    })}
 	    </div>
-	    <hr/>
 	    <div className='row'>
 	    {this.props.user.name && <h2 className="whiteText">Find Friends</h2>}
 	    {this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}

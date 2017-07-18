@@ -96,9 +96,36 @@ router.post('/login', function(req, res){
 
 router.get('/logout', function(req, res){
 	req.logout();
-
 	res.redirect('/');
 });
+
+router.put('/favorite/:id', function (req,res) {
+	users.update({_id: req.params.id},{$push:{friends: req.body._id}},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	})
+});
+
+router.put('/unfavorite/:id', function (req,res) {
+	users.update({_id: req.params.id},{$pull:{friends: req.body._id}},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	})
+});
+
+router.put('/block/:id', function (req,res) {
+	users.update({_id: req.params.id},{$push:{blocked: req.body._id}},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	})
+});
+
+router.get('/user/:id', function(req,res){
+	users.findOne({_id: req.params.id}, function(err, userFound){
+		if(err) throw err;
+		res.send(userFound);
+	})
+})
 
 
 
