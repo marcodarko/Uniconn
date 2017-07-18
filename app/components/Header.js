@@ -18,7 +18,7 @@ export default class Header extends React.Component {
 
   render() {
     return (
-	      <nav className="navbar navbar-inverse backPurple noBorder">
+	      <nav className="navbar backPurple noBorder">
 		  	  <div className="container-fluid text-center">
 			    <div className="navbar-header">
 			      <NavLink className="navbar-brand" to="/">

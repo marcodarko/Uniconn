@@ -4,6 +4,7 @@ import LocationBox from '../components/LocationBox';
 import Results from '../components/Results';
 import Divider from '../components/Divider';
 import LoginForm from '../components/LoginForm';
+import Footer from '../components/Footer';
 
 export default class Home extends React.Component {
 
@@ -53,6 +54,7 @@ export default class Home extends React.Component {
       	<LocationBox user={this.state.user}/> 
       	<Results user={this.state.user}/>
       	<Divider/>
+        <Footer/> 
       </div>
     );
   }

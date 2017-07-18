@@ -66,7 +66,7 @@ handleSubmit(){
 
 renderLogin(){
 	return(<div>
-          <h3 className="whiteText">Welcome Back</h3>
+          <h5 className="whiteText">Welcome Back</h5>
 			<form >
 			  <div className="form-group">
 			    <label className="purpleText">Username</label>
@@ -93,10 +93,10 @@ renderRegistration(){
 
     return (
 
-    	<div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  col-xl-12 backOrange text-center" style={{padding:'5px'}}>
+    	<div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  col-xl-12 backOrange text-center clearBoth" >
     		{this.props.action ==="login" && this.renderLogin()}
     		{this.props.action ==="register" && this.renderRegistration()}
-        {this.props.action === 'logged' && <p className="purpleText">Hello, <strong>{this.props.user.username}</strong></p>}
+        {this.props.action === 'logged' && <p style={{margin:'8px'}} className="purpleText">Hello, <strong>{this.props.user.username}</strong></p>}
 		</div>
     );
   }

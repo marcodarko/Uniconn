@@ -99,6 +99,7 @@ router.get('/logout', function(req, res){
 	res.redirect('/');
 });
 
+// adds one user to user's friends array
 router.put('/favorite/:id', function (req,res) {
 	users.update({_id: req.params.id},{$push:{friends: req.body._id}},function(err,updatedUser){
 		if(err) throw err;
@@ -106,26 +107,49 @@ router.put('/favorite/:id', function (req,res) {
 	})
 });
 
+// removes one user to user's friends array
 router.put('/unfavorite/:id', function (req,res) {
-	users.update({_id: req.params.id},{$pull:{friends: req.body._id}},function(err,updatedUser){
+	users.update({_id: req.params.id},{$pullAll:{friends: req.body._id}},function(err,updatedUser){
 		if(err) throw err;
 		res.send(updatedUser);
 	})
 });
 
+// adds the ID of a user to the main USER's blocked array
 router.put('/block/:id', function (req,res) {
 	users.update({_id: req.params.id},{$push:{blocked: req.body._id}},function(err,updatedUser){
 		if(err) throw err;
 		res.send(updatedUser);
 	})
 });
-
+// finds one user by ID
 router.get('/user/:id', function(req,res){
 	users.findOne({_id: req.params.id}, function(err, userFound){
 		if(err) throw err;
 		res.send(userFound);
 	})
 })
+
+// unblocks all, sets blocked array to empty array
+router.put('/unblock-all/:id', function( req, res){
+	users.update({_id: req.params.id},{$set:{blocked: [] }},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	})
+})
+
+// deletes user from DB
+router.delete('/delete-account/:id', function (req,res) {
+
+	// makes sure user is the one sending the delte request
+	if(req.params.id === req.body._id){
+		users.deleteOne({_id: ObjectId(req.params.id)}, function(err, confirmation){
+			if(err) throw err;
+			res.send(confirmation);
+		})
+	}
+})
+
 
 
 

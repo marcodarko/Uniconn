@@ -84,8 +84,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf192', end
 
 
 .slide-in-fwd-center {
-  -webkit-animation: slide-in-fwd-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-          animation: slide-in-fwd-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-in-fwd-center 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          animation: slide-in-fwd-center 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 /* ----------------------------------------------
@@ -250,15 +250,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf192', end
           animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
+.clearBoth{
+  clear: both;
+}
 
 
 .divider{
   width: 100%;
   margin: 0px;
-  height: 20px;
+  height: 10px;
+  clear:both;
   background: linear-gradient(274deg, #7908a7, #1bf7ff, #ff1bc8, #eaff1b);
 background-size: 800% 800%;
-
 -webkit-animation: AnimationName 30s ease infinite;
 -moz-animation: AnimationName 30s ease infinite;
 animation: AnimationName 30s ease infinite;
@@ -360,9 +363,9 @@ html, body{
   /*STILL*/
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f989d6+1,ffc691+19,ffeead+37,b5ffd0+58,adedff+77,c1a4f2+100 */
 background: rgb(249,137,214); /* Old browsers */
-background: -moz-linear-gradient(left, rgba(249,137,214,1) 1%, rgba(255,198,145,1) 19%, rgba(255,238,173,1) 37%, rgba(181,255,208,1) 58%, rgba(173,237,255,1) 77%, rgba(193,164,242,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, rgba(249,137,214,1) 1%,rgba(255,198,145,1) 19%,rgba(255,238,173,1) 37%,rgba(181,255,208,1) 58%,rgba(173,237,255,1) 77%,rgba(193,164,242,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, rgba(249,137,214,1) 1%,rgba(255,198,145,1) 19%,rgba(255,238,173,1) 37%,rgba(181,255,208,1) 58%,rgba(173,237,255,1) 77%,rgba(193,164,242,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+background: -moz-linear-gradient(bottom, rgba(249,137,214,1) 1%, rgba(255,198,145,1) 19%, rgba(255,238,173,1) 37%, rgba(181,255,208,1) 58%, rgba(173,237,255,1) 77%, rgba(193,164,242,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(bottom, rgba(249,137,214,1) 1%,rgba(255,198,145,1) 19%,rgba(255,238,173,1) 37%,rgba(181,255,208,1) 58%,rgba(173,237,255,1) 77%,rgba(193,164,242,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(249,137,214,1) 1%,rgba(255,198,145,1) 19%,rgba(255,238,173,1) 37%,rgba(181,255,208,1) 58%,rgba(173,237,255,1) 77%,rgba(193,164,242,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', endColorstr='#c1a4f2',GradientType=1 ); /* IE6-9 */
 
 }
@@ -705,7 +708,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
   background-color: #22ceb2;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid lightblue;
+  border: 2px solid #a7fff8;
   text-decoration: none;
   color: white;
 }
@@ -714,7 +717,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
   background-color: #31d9e0;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid lightblue;
+  border: 2px solid #a7fff8;
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
@@ -724,7 +727,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
   background-color: #31d9e0;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid lightblue;
+  border: 2px solid #a7fff8;
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
@@ -769,7 +772,7 @@ margin:5px;
   background-color: #0faee0;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid lightblue;
+  border: 2px solid #a7fff8;
   text-decoration: none;
   color: white;
 }
@@ -778,7 +781,7 @@ margin:5px;
  background-color: #65d1ec;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid lightblue;
+  border: 2px solid #a7fff8;
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
@@ -788,22 +791,26 @@ margin:5px;
  background-color: #8d5bd4;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid lightblue;
+  border: 2px solid #a7fff8;
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
 }
 
 .favesList{
-  width: 100%;
-  overflow: scroll;
-  height: auto;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: scroll;
+  max-height: 60px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .faveListItem{
   width: 60px;
   height: 60px;
-  display: inline-block;
+  display: inline;
   text-align: center;
   margin: 3px;
 }
@@ -811,15 +818,22 @@ margin:5px;
 .favesListImg{
   box-shadow: 2px 2px 4px purple;
   border-radius: 100%;
-  width: 50px;
+  width: 60px;
   border:2px white dotted;
 }
 
 .favesListImg:hover{
   box-shadow: 0px 0px 4px purple;
   border-radius: 100%;
-  width: 50px;
+  width: 60px;
   border:2px hotpink solid;
+}
+
+.favesListImg:focus{
+  box-shadow: 0px 0px 4px purple;
+  border-radius: 100%;
+  width: 60px;
+  border:2px yellow solid;
 }
 
 .messageBox{
@@ -827,4 +841,85 @@ margin:5px;
   border:lightblue 2px solid;
   min-height:200px;
   max-height:500px;
+  padding: 10px;
 }
+
+.deleteButton{ 
+  margin:5px;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+}
+
+.deleteButton:hover{
+  margin:5px; 
+  background-color: red;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+  cursor: url('./uniicon.ico'),default;
+}
+
+.deleteButton:focus{
+  margin:5px; 
+  background-color: red;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid red;
+  text-decoration: none;
+  color: red;
+  cursor: url('./uniicon.ico'),default;
+}
+
+.myMSG{
+  margin: 5px;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px violet;
+  background-color: #7044af;
+  color: white;
+  float: left;
+  clear: both;
+  width: 80%;
+}
+
+.otherMSG{
+  margin: 5px;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px violet;
+  background-color: #3e5cbd;
+  color: white;
+  float: right;
+  clear: both;
+  width: 80%;
+}
+
+#messages{
+  min-height: 200px;
+  max-height: 300px;
+  overflow: scroll;
+  background-color: #f2f2f2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

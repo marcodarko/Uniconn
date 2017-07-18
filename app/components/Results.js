@@ -38,9 +38,9 @@ export default class Results extends React.Component {
 
   render() {
     return (
-      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder">
+      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder" style={{margin:'0px'}}>
 	  <div className="panel-body text-center">
-	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success alert-dismissable greenBack noBorder whiteText" role="alert">
+	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success alert-dismissable orangeBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
 		</div>}

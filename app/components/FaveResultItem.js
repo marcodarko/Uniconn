@@ -13,10 +13,10 @@ export default class FaveResultItem extends React.Component {
   }
 
   componentDidMount(){
-  	axios.get('/user/'+this.props.id).then( res=>{
+  	axios.get('/user/'+this.props.id).then( res =>{
+  		//console.log("result item data", res.data)
   		this.setState({
-  			resultUser: res.data,
-  			picready: true
+  			resultUser: res.data
   		})
   	});
   }
@@ -28,7 +28,7 @@ export default class FaveResultItem extends React.Component {
   render() {
     return (
       <div className="faveListItem">
-      	{this.state.picready && this.renderPic()}
+      	<img className="favesListImg" src={this.state.resultUser.photo || './images/default.png'} alt='my fave'/>
       </div>
     );
   }
