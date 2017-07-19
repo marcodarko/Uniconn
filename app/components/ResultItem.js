@@ -62,8 +62,8 @@ export default class ResultItem extends React.Component {
           {this.props.feetAway < 10000 && this.props.feetAway > 5000 && <div><span style={{color:'hotpink'}} className="glyphicon glyphicon-tint" aria-hidden="true"></span> <strong style={{color:'#f88b00'}}>Far</strong></div>}
           {this.props.feetAway < 2000000000 && this.props.feetAway > 10000 && <div><span style={{color:'hotpink'}} className="glyphicon glyphicon-plane" aria-hidden="true"></span> <strong style={{color:'#ec4f48'}}>Far Far Away</strong></div>}
           <img src={this.props.photo || "./images/default.png" }/>
-        	<h5>{this.props.name}</h5>
-        	<p>@{this.props.username}</p>
+        	<h5>@{this.props.username}</h5>
+        	<p>{this.props.name}</p>
           <div className="row">
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
               <button onClick={ ()=>{ this.blockThis(this.props.id) } } type="button" className="btn block"><span className="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Block</button>

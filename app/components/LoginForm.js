@@ -49,12 +49,13 @@ handleSubmit(){
   }
 
 	axios.post('/login', loginInfo).then(res=>{
-    console.log("login successful", res.data);
+    
+    this.props.logged();
+    this.props.sendUserToHome(res.data);
     this.setState({
       loginMSG: "Logged In"
     })
-     this.props.logged();
-     this.props.sendUserToHome(res.data);
+    console.log("login successful", res.data);
 
   }).catch(err=>{
     this.setState({

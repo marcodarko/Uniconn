@@ -17,7 +17,7 @@ export default class FaveBox extends React.Component {
       				return <FaveResultItem key={index} id={friend} />
       			})}
       		</div>
-	  		<MessagesBox/>
+	  		<MessagesBox user={this.props.user}/>
 	  </div>	
     );
   }

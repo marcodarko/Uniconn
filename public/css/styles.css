@@ -419,6 +419,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
   text-decoration: none;
   color: hotpink;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
 .themeButton2{ 
@@ -451,6 +452,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
   text-decoration: none;
   color: hotpink;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
 .connButton{ 
@@ -499,6 +501,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffc063', e
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
 .purpleBack{
@@ -702,6 +705,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
 .fave{ 
@@ -731,6 +735,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
 
@@ -766,6 +771,7 @@ margin:5px;
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
 .fave2{ 
@@ -795,6 +801,7 @@ margin:5px;
   text-decoration: none;
   color: white;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
 .favesList{
@@ -834,6 +841,7 @@ margin:5px;
   border-radius: 100%;
   width: 60px;
   border:2px yellow solid;
+  outline: none !important;
 }
 
 .messageBox{
@@ -874,31 +882,42 @@ margin:5px;
   text-decoration: none;
   color: red;
   cursor: url('./uniicon.ico'),default;
+  outline: none !important;
 }
 
-.myMSG{
+.messageComp{
   margin: 5px;
   padding: 4px;
   border-radius: 10px;
   box-shadow: 2px 2px 2px violet;
-  background-color: #7044af;
+  background-color: grey;
   color: white;
-  float: left;
   clear: both;
   width: 80%;
+  position: relative;
 }
 
-.otherMSG{
-  margin: 5px;
-  padding: 4px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px violet;
-  background-color: #3e5cbd;
+.sent{
+  position: absolute;
+  top:0;
+  right: 0;
+  margin: 4px;
   color: white;
-  float: right;
-  clear: both;
-  width: 80%;
+  font-size:9px;
 }
+
+.from{
+  color: hotpink;
+  font-weight: bold;
+}
+
+.chatPhoto{
+  border-radius: 100%;
+  margin: 5px;
+  width:25px;
+}
+
+
 
 #messages{
   min-height: 200px;
