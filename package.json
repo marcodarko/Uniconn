@@ -31,6 +31,7 @@
     "fs": "0.0.1-security",
     "geolib": "^2.0.22",
     "http": "0.0.0",
+    "kute.js": "^1.6.2",
     "method-override": "^2.3.9",
     "moment": "^2.18.1",
     "mongoose": "^4.10.4",

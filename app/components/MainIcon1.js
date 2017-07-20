@@ -2,7 +2,6 @@ import React from 'react';
 import {TweenMax, Power2, TimelineLite, TweenLite} from "gsap";
 import { NavLink } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import KUTE from 'kute.js';
 
 export default class MainIcon1 extends React.Component {
 

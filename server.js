@@ -34,6 +34,8 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
+  socket.broadcast.emit('Someone joined the chat');
+
 });
 
 io.on('connection', function(socket){

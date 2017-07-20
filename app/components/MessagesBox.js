@@ -21,6 +21,8 @@ export default class MessagesBox extends React.Component {
   		this.setState({
   			userMSG: e.target.value.trim()
   		})
+
+      
   }
 
   componentDidMount(){
@@ -51,6 +53,7 @@ export default class MessagesBox extends React.Component {
   	}
   	//console.log('msg', newMessage);
   	this.state.socket.emit('chat message', newMessage);
+    document.getElementById('chatMSG').value= " " ;
   }
 
   getImage(e){
@@ -90,12 +93,21 @@ export default class MessagesBox extends React.Component {
 	  		
 	  	</div>
 	  	<div className="input-group" className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-	  		<form id='chat' onSubmit={self.handleSubmit}>
+	  		{/*<form id='chat' onSubmit={self.handleSubmit}>
 	  			<input autoComplete='off' type="text" id="chatMSG" className="form-control" onChange={self.getMessageValue}></input>
 	  			<button className="connButton"><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span> Send</button>
-	  		</form>
-        <form >
-          <input className="form-control" type="file" accept="image/*" onChange={this.getImage}/>
+	  		</form>*/}
+         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div className="input-group">
+              <input autoComplete='off' id="chatMSG" type="text" className="form-control" placeholder="Type here..." onChange={self.getMessageValue}/>
+              <span className="input-group-btn">
+                <button style={{backgroundColor: 'hotpink', color:'white'}} className="btn btn-default" type="button" onClick={self.handleSubmit}>Send</button>
+              </span>
+            </div>
+          </div>
+          <hr/>
+        <form>
+          <input id="chatIMG" className="form-control pinkBack whiteText" type="file" accept="image/*" onChange={this.getImage}/>
         </form>
 	  	</div>
       </div>
