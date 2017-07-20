@@ -223,10 +223,7 @@ handleSubmit(){
           <label>Age</label>
           <input type="text" className="form-control inputBack" placeholder="Age" name="age" required onChange={this.getAge}></input>
         </div>
-        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <label>Set Location</label><br/>
-          <MainIcon1 getLocation={this.getLocation} locationMSG={this.state.locationMSG}/>
-        </div>
+        
          <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Here For</label>
           <br/>
@@ -243,8 +240,7 @@ handleSubmit(){
           <select onChange={this.getIdentity}>
             <option value="" disabled >Choose your option</option>
             <option value="gay">Gay</option>
-            <option value="bi">Bi</option>
-            <option value="lesbian">Lesbian</option>
+            <option value="bi">Bi</option>          
             <option value="transgender">Transgender</option>
             <option value="genderqueer">GenderQueer</option>
             <option value="non-binary">Non-Binary</option>
@@ -272,6 +268,10 @@ handleSubmit(){
 			    <label>Confirm Password</label>
 			    <input type="password" className="form-control inputBack" placeholder="Confirm Password" name="password2" required onChange={this.getPassword2}></input>
 			  </div>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <label>Set Location</label><br/>
+          <MainIcon1 getLocation={this.getLocation} locationMSG={this.state.locationMSG}/>
+        </div>
 			  <button type="button" onClick={this.handleSubmit} className="btn btn-lg loginButton">Submit</button>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
         <h3 style={{color: this.state.submitMSG === "Success" ? '#00db8e': "#ff6464"}}>{this.state.submitMSG}</h3>

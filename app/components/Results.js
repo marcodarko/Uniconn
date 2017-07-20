@@ -40,6 +40,10 @@ export default class Results extends React.Component {
     return (
       <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder" style={{margin:'0px'}}>
 	  <div className="panel-body text-center">
+	  	<div className='row'>
+	    	 {this.props.user.name && <h3 className="whiteText">Find Friends</h3>}
+	     	 {this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    
+		</div>
 	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success alert-dismissable orangeBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
@@ -49,7 +53,7 @@ export default class Results extends React.Component {
 		  {this.state.resMSG}
 		</div>}
 	    <br/>
-	    <div className="row text-center">
+	    <div id="resultsHere" className="row text-center">
 	    {!this.props.user.name && <img style={{borderRadius:"20px"}} src="./images/homeHero.jpg" width="70%" alt="home image uniconn" className="jello-horizontal"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
 
@@ -62,11 +66,7 @@ export default class Results extends React.Component {
 	    	return <ResultItem userID={this.props.user._id} key={index} feetAway={distance.toFixed(2)} photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
 	    })}
 	    </div>
-	    <div className='row'>
-	    {this.props.user.name && <h2 className="whiteText">Find Friends</h2>}
-	    {this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}
-	    
-		</div>
+
 	  </div>
 	</div>
     );

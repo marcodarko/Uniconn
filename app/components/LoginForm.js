@@ -28,7 +28,7 @@ constructor(props) {
 getUsername(event){
 
 	this.setState({
-		username: event.target.value
+		username: event.target.value.toLowerCase()
 	})
 }
 

@@ -54,7 +54,7 @@ export default class ResultItem extends React.Component {
       <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2 resContainer  purpleText" style={{display: this.state.blocked ? 'none':'initial'}}>
         <div className="resultItemBox" style={{backgroundColor: this.state.favorited? '#ecd8ff': 'white'}}>
           <div className="backPurple whiteText" style={{padding:'5px', borderRadius:'10px'}}>
-            <span style={{color:'hotpink'}} className="glyphicon glyphicon-screenshot" aria-hidden="true"></span> <strong>{this.props.feetAway}</strong> feet away
+            <span style={{color:'hotpink'}} className="glyphicon glyphicon-screenshot" aria-hidden="true"></span> <strong>{this.props.feetAway > 15000 && "FAR" || this.props.feetAway+" feet away" }</strong> 
           </div>
           {this.props.feetAway < 500 && <div className="heartbeat"><span style={{color:'hotpink'}} className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong style={{color:'#0591ff'}}>Right Next To You!</strong></div>}
           {this.props.feetAway < 2000 && this.props.feetAway > 500 && <div className="heartbeat"><span style={{color:'hotpink'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> <strong style={{color:'#0cc976'}}>Super Close</strong></div>}

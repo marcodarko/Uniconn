@@ -109,7 +109,7 @@ router.put('/favorite/:id', function (req,res) {
 
 // removes one user to user's friends array
 router.put('/unfavorite/:id', function (req,res) {
-	users.update({_id: req.params.id},{$pullAll:{friends: req.body._id}},function(err,updatedUser){
+	users.update({_id: req.params.id},{$pull:{friends: req.body._id}},function(err,updatedUser){
 		if(err) throw err;
 		res.send(updatedUser);
 	})

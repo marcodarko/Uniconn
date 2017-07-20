@@ -3,7 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-
+var fs = require('fs'); // required for file serving
 var expressValidator = require('express-validator');
 var session = require('express-session');
 var passport = require('passport');
@@ -42,6 +42,7 @@ io.on('connection', function(socket){
     io.emit('get message', msg);
   });
 });
+
 
 // Run Morgan for Logging
 app.use(logger("dev"));

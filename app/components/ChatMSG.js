@@ -14,6 +14,7 @@ export default class ChatMSG extends React.Component {
 	      <span className="from">{this.props.from}</span>
 	      <br/> 
 	      {this.props.message}
+        {this.props.file && <img className="chatImg" src={this.props.file} alt="sent image"/>}
       </div>
     );
   }
