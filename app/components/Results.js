@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import geolib from 'geolib';
 import ResultItem from './ResultItem';
 
 export default class Results extends React.Component {
@@ -76,13 +75,6 @@ getDistance(e){
 	    <div id="resultsHere" className="row text-center">
 	    {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
-
-
-	    	{/*let res= geolib.getDistance(
-		    {latitude: this.props.user.latitude, longitude: this.props.user.longitude},
-		    {latitude: doc.latitude, longitude: doc.longitude}
-			);
-			let distance = res/3.28084;*/}
 
 	    	return <ResultItem userID={this.props.user._id} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
 	    })}
