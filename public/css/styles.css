@@ -341,8 +341,8 @@ animation: AnimationName 30s ease infinite;
 
 
 .fade-in-fwd {
-	-webkit-animation: fade-in-fwd 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: fade-in-fwd 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	-webkit-animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 
@@ -415,7 +415,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
   background-color: transparent;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid hotpink;
+  border: 2px solid lightyellow;
   text-decoration: none;
   color: hotpink;
   cursor: url('./uniicon.ico'),default;
@@ -669,9 +669,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
 }
 
 .heroImg{
-  width: 90%;
+  width: 100%;
   border-radius: 20px;
-  margin: 10px;
+  margin: 5px;
 }
 
 .alert{

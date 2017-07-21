@@ -9,17 +9,25 @@ export default class Results extends React.Component {
     super(props);
     this.state={
     	resMSG:'',
-    	results: []
+    	results: [],
+    	pickedDistance:''
     }
     this.handleClick = this.handleClick.bind(this);
+    this.getDistance = this.getDistance.bind(this);
   }
 
+getDistance(e){
+
+	this.setState({
+		pickedDistance: e.target.value
+	})
+}
 
  handleClick(){
 
-    	 axios.get('/api/find-all').then( res=>{
+    	 axios.post('/api/find-all',{lat: this.props.user.latitude, lon: this.props.user.longitude, distance:this.state.pickedDistance}).then( res=>{
 
-			//console.log("API res",res.data);
+			console.log("API res",res.data);
 			this.setState({
 				resMSG: "We Found Some Peeps :)",
 				results: res.data
@@ -42,7 +50,19 @@ export default class Results extends React.Component {
 	  <div className="panel-body text-center">
 	  	<div className='row'>
 	    	 {this.props.user.name && <h3 className="whiteText">Find Friends</h3>}
-	     	 {this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    
+	    	 {this.props.user.name && <form>
+	    	 	<label className='whiteText'>Distance</label>
+	    	 	<br/>
+	    	 	<select onChange={this.getDistance}>
+	    	 		<option value="" disabled >Choose Distance</option>
+	    	 		<option value='2640'>Whithin 5 Miles</option>
+	    	 		<option value='52800'>Whithin 10 Miles</option>
+	    	 		<option value='79200'>Whithin 15 Miles</option>
+	    	 		<option value='264000'>Whithin 50 Miles</option>
+	    	 		<option value='528000'>Whithin 100 Miles</option>
+	    	 	</select>
+	    	 </form>}
+	     	 {this.state.pickedDistance && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    
 		</div>
 	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success alert-dismissable orangeBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -54,16 +74,17 @@ export default class Results extends React.Component {
 		</div>}
 	    <br/>
 	    <div id="resultsHere" className="row text-center">
-	    {!this.props.user.name && <img style={{borderRadius:"20px"}} src="./images/homeHero.jpg" width="70%" alt="home image uniconn" className="jello-horizontal"/>}
+	    {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
 
-	    	let res= geolib.getDistance(
-		    {latitude: parseFloat(this.props.user.latitude), longitude: parseFloat(this.props.user.longitude)},
-		    {latitude: parseFloat(doc.latitude), longitude: parseFloat(doc.longitude)}
-			);
-			let distance = res/3.28084;
 
-	    	return <ResultItem userID={this.props.user._id} key={index} feetAway={distance.toFixed(2)} photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
+	    	{/*let res= geolib.getDistance(
+		    {latitude: this.props.user.latitude, longitude: this.props.user.longitude},
+		    {latitude: doc.latitude, longitude: doc.longitude}
+			);
+			let distance = res/3.28084;*/}
+
+	    	return <ResultItem userID={this.props.user._id} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
 	    })}
 	    </div>
 

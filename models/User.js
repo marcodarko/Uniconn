@@ -44,6 +44,9 @@ var UserSchema = mongoose.Schema({
 	},
 	conns:{
 		type: Number
+	},
+	status:{
+		type: String
 	}
 }, { collection: 'users' });
 

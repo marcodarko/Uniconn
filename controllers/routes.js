@@ -4,6 +4,7 @@ var users = require('../models/User');
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var geolib = require('geolib');
 
 // Get Homepage
 router.get('/', function(req, res){
@@ -19,11 +20,35 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
-router.get('/api/find-all', function(req, res) {
+router.post('/api/find-all', function(req, res) {
+
+	let userLat = req.body.lat;
+	let userLon = req.body.lon;
+	let userDistance = parseInt(req.body.distance);
+	let usersCloseToUser =[];
+
+	//console.log('user lat long', userLat, userLon);
 
 	users.find({}, (err,docs)=>{
 		if(err) res.send(err);
-		return res.send(docs);
+
+		//console.log('docs server', docs);
+		for(i=0; i<docs.length; i++){
+
+			//console.log('docs lat', docs[i].latitude);
+			//console.log('docs long', docs[i].longitude);
+
+			let res= geolib.getDistance(
+		    {latitude: parseFloat(userLat), longitude: parseFloat(userLon)},
+		    {latitude: parseFloat(docs[i].latitude), longitude: parseFloat(docs[i].longitude)}
+			);
+
+			let distance = res/3.28084;
+			if(distance < userDistance){
+				usersCloseToUser.push(docs[i]);
+			}
+		}
+		return res.send(usersCloseToUser);
 	})
 	
 });
@@ -148,6 +173,14 @@ router.delete('/delete-account/:id', function (req,res) {
 			res.send(confirmation);
 		})
 	}
+})
+
+// unblocks all, sets blocked array to empty array
+router.put('/api/update-location/:id', function( req, res){
+	users.update({_id: req.params.id},{$set:{latitude: req.body.lat, longitude: req.body.long }},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	})
 })
 
 

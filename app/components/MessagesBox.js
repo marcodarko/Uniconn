@@ -107,6 +107,7 @@ export default class MessagesBox extends React.Component {
           </div>
           <hr/>
         <form>
+          <label htmlFor="chatIMG"><span  className="glyphicon glyphicon-camera" aria-hidden="true"></span> Send Pics</label>
           <input id="chatIMG" className="form-control pinkBack whiteText" type="file" accept="image/*" onChange={this.getImage}/>
         </form>
 	  	</div>

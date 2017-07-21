@@ -181,6 +181,7 @@ handleSubmit(){
 
 }
 
+
  getLocation(){
       //console.log("this is happening");
       navigator.geolocation.getCurrentPosition( (location,err) =>{
