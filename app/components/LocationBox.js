@@ -13,6 +13,7 @@ export default class LocationBox extends React.Component {
   }
 
   render() {
+
     return (
      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPurple noBorder whiteText" style={{margin:'0px'}}>
 	    <div className="panel-body text-center ">

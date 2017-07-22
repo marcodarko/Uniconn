@@ -1,5 +1,4 @@
 import React from 'react';
-import {TweenMax, Power2, TimelineLite, TweenLite} from "gsap";
 import { NavLink } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 

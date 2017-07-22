@@ -45,7 +45,7 @@ getDistance(e){
 
   render() {
     return (
-      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder" style={{margin:'0px'}}>
+      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder slide-in-fwd-center" style={{margin:'0px'}}>
 	  <div className="panel-body text-center">
 	  	<div className='row'>
 	    	 {this.props.user.name && <h3 className="whiteText">Find Friends</h3>}
@@ -54,11 +54,11 @@ getDistance(e){
 	    	 	<br/>
 	    	 	<select onChange={this.getDistance}>
 	    	 		<option value="" disabled >Choose Distance</option>
-	    	 		<option value='2640'>Whithin 5 Miles</option>
-	    	 		<option value='52800'>Whithin 10 Miles</option>
-	    	 		<option value='79200'>Whithin 15 Miles</option>
-	    	 		<option value='264000'>Whithin 50 Miles</option>
-	    	 		<option value='528000'>Whithin 100 Miles</option>
+	    	 		<option value='2640'>Within 5 Miles</option>
+	    	 		<option value='52800'>Within 10 Miles</option>
+	    	 		<option value='79200'>Within 15 Miles</option>
+	    	 		<option value='264000'>Within 50 Miles</option>
+	    	 		<option value='528000'>Within 100 Miles</option>
 	    	 	</select>
 	    	 </form>}
 	     	 {this.state.pickedDistance && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    

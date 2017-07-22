@@ -62,22 +62,28 @@ export default class ResultItem extends React.Component {
 
   render() {
     return (
-      <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2 col-xl-2 resContainer  purpleText" style={{display: this.state.blocked ? 'none':'initial'}}>
-      <div className="resultItemBox" style={{backgroundColor: this.state.favorited? '#ecd8ff': 'white'}}>
-          <h5>@{this.props.username}</h5>
-          <img src={this.props.photo || "./images/default.png" }/>
-        	<p>{this.props.name}</p>
-          <div className="row">
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
-              <button onClick={ ()=>{ this.blockThis(this.props.id) } } type="button" className="btn block"><span className="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Block</button>
+      <div className="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3 resContainer  whiteText" style={{display: this.state.blocked ? 'none':'initial'}}>
+      <div className="resultItemBox" style={{backgroundColor: this.state.favorited? '#ecd8ff': 'white', backgroundImage:'url('+this.props.photo || './images/default.png'+')', backgroundSize:'cover', backgroundRepeat:'no-repeat', backgroundPosition:'center'}}>
+          <div className="resultGradientBox">
+            {/*<img src={this.props.photo || "./images/default.png" }/>*/}         	
+            <div className="row">
+              <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                {/*<button onClick={ ()=>{ this.blockThis(this.props.id) } } type="button" className="btn block"><span className="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Block</button>*/}
+                <span className="block" style={{fontSize:"2em", cursor:'pointer'}} onClick={ ()=>{ this.blockThis(this.props.id) } } className="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+              </div>
+              <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                {/*{!this.state.favorited && <button onClick={ ()=>{ this.favoriteThis(this.props.id) } } type="button" className="btn fave"><span  className="glyphicon glyphicon-plus" aria-hidden="true"></span> Fave</button>}
+                {this.state.favorited && <button onClick={ ()=>{ this.UnfavoriteThis(this.props.id) } } type="button" className="btn fave2"><span  className="glyphicon glyphicon-minus" aria-hidden="true"></span>Fave</button>}*/}
+                {!this.state.favorited && <span style={{fontSize:"2em", cursor:'pointer'}} className="fave" onClick={ ()=>{ this.favoriteThis(this.props.id) } } className="glyphicon glyphicon-plus" aria-hidden="true"></span>}
+                {this.state.favorited && <span style={{fontSize:"2em", cursor:'pointer'}} className="fave2" onClick={ ()=>{ this.UnfavoriteThis(this.props.id) } } className="glyphicon glyphicon-minus" aria-hidden="true"></span>}
+              </div>
             </div>
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
-              {!this.state.favorited && <button onClick={ ()=>{ this.favoriteThis(this.props.id) } } type="button" className="btn fave"><span  className="glyphicon glyphicon-plus" aria-hidden="true"></span> Fave</button>}
-              {this.state.favorited && <button onClick={ ()=>{ this.UnfavoriteThis(this.props.id) } } type="button" className="btn fave2"><span  className="glyphicon glyphicon-minus" aria-hidden="true"></span>Fave</button>}
-            </div>
+            <hr style={{border: 'lightblue 1px solid'}}/>
+            <h5 style={{textShadow:'1px 1px 2px black'}}>@{this.props.username}</h5>
+            <p>{this.props.name}</p>
+            <button type="button" className="btn themeButton"><span  className="glyphicon glyphicon-comment" aria-hidden="true"></span> CONN</button>
+
           </div>
-          <hr/>
-          <button type="button" className="btn connButton"><span  className="glyphicon glyphicon-comment" aria-hidden="true"></span> CONN</button>
         </div>
       </div>
     );
