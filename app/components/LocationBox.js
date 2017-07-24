@@ -4,7 +4,6 @@ import FaveBox from './FaveBox';
 import UnblockAllButton from './UnblockAllButton';
 import DeleteAccountButton from './DeleteAccountButton';
 import UpdateLocationButton from './UpdateLocationButton';
-import Divider from './Divider';
 
 export default class LocationBox extends React.Component {
 
@@ -15,7 +14,7 @@ export default class LocationBox extends React.Component {
   render() {
 
     return (
-     <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPurple noBorder whiteText" style={{margin:'0px'}}>
+     <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPurple noBorder whiteText clearBoth" style={{margin:'0px'}}>
 	    <div className="panel-body text-center ">
 	    	{!this.props.user.name && <h4 className="heartbeat whiteText">Log in to start</h4>}
 	  		{this.props.user.name && 
@@ -26,7 +25,7 @@ export default class LocationBox extends React.Component {
   				<span><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span> {this.props.user.email}</span><br/>
   				<span><span className="glyphicon glyphicon-record" aria-hidden="true"></span> {this.props.user.latitude}, {this.props.user.longitude}</span>
           <br/>
-          <Divider/>
+          <hr/>
   				<div className="backBlue" style={{borderRadius:'10px', marginTop:'10px'}}>
   				<span style={{fontSize:'11px'}}><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> Options</span>
   				<br/>

@@ -27,22 +27,40 @@ var PORT = process.env.PORT || 3000;
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var usernames ={};
+
 io.on('connection', function(socket){
+
   console.log('socket user connected');
+
+  socket.on('user joined', function(data){
+     console.log('join room', data.username);
+     socket.username = data.username;
+     //usernames[username]= socket;
+     socket.join(data.username);
+  });
 
   socket.on('disconnect', function(){
     console.log('user disconnected');
+    //elete usernames[socket.username];
   });
 
-  socket.broadcast.emit('Someone joined the chat');
-
-});
-
-io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     //console.log('message: ' + msg);
     io.emit('get message', msg);
   });
+
+  socket.on('typing', function(username){
+    //console.log("username is typing", username);
+    socket.broadcast.emit('typing', username);
+  });
+
+  socket.on('private', function(data){
+      socket.join(data.from);
+      console.log('sending private', data);
+      io.sockets.in(data.to).emit('p message',data);
+  });
+
 });
 
 

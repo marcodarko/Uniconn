@@ -14,7 +14,7 @@ export default class FaveBox extends React.Component {
       <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center">	  			
       		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 favesList backPink">
       			{this.props.user.name && this.props.user.friends.map( (friend,index)=>{
-      				return <FaveResultItem key={index} id={friend} />
+      				return <FaveResultItem key={index} username={friend} />
       			})}
       		</div>
 	  		<MessagesBox user={this.props.user}/>

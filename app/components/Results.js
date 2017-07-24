@@ -45,7 +45,7 @@ getDistance(e){
 
   render() {
     return (
-      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder slide-in-fwd-center" style={{margin:'0px'}}>
+      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder slide-in-fwd-center clearBoth" style={{margin:'0px'}}>
 	  <div className="panel-body text-center">
 	  	<div className='row'>
 	    	 {this.props.user.name && <h3 className="whiteText">Find Friends</h3>}
@@ -76,7 +76,7 @@ getDistance(e){
 	    {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
 	    {this.state.results && this.state.results.map( (doc,index)=>{
 
-	    	return <ResultItem userID={this.props.user._id} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
+	    	return <ResultItem updateUser={this.props.updateUser} userID={this.props.user._id} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
 	    })}
 	    </div>
 

@@ -18,10 +18,12 @@ export default class MessagesBox extends React.Component {
   }
 
   getMessageValue(e){
+
+      this.state.socket.emit('typing', this.props.user.username);
+
   		this.setState({
   			userMSG: e.target.value.trim()
   		})
-
       
   }
 
@@ -34,10 +36,17 @@ export default class MessagesBox extends React.Component {
   		let newMsgArray = self.state.messages;
   		newMsgArray.push(msg);
 
+      document.getElementById('typingStatus').innerHTML= " ";
+
   		self.setState({
   			messages: newMsgArray
-  		})
+  		});
+
   	})
+
+    self.state.socket.on('typing', function(data){
+      document.getElementById('typingStatus').innerHTML= "<p><em>"+data+" is typing...</em></p>";
+    })  
 
 
   }
@@ -90,6 +99,7 @@ export default class MessagesBox extends React.Component {
   			{self.state.messages && self.state.messages.map( (doc,index)=>{
   				return <ChatMSG file={doc.file} userID={this.props.user._id} docID={doc.fromID} key={index} from={doc.from} message={doc.message} photo={doc.photo} sent={doc.sent}/>
   			})}
+        <div id="typingStatus" className='purpleText col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'></div>
 	  		
 	  	</div>
 	  	<div className="input-group" className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

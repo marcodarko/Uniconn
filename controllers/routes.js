@@ -126,7 +126,7 @@ router.get('/logout', function(req, res){
 
 // adds one user to user's friends array
 router.put('/favorite/:id', function (req,res) {
-	users.update({_id: req.params.id},{$push:{friends: req.body._id}},function(err,updatedUser){
+	users.update({_id: req.params.id},{$push:{friends: req.body.username}},function(err,updatedUser){
 		if(err) throw err;
 		res.send(updatedUser);
 	})
@@ -134,7 +134,7 @@ router.put('/favorite/:id', function (req,res) {
 
 // removes one user to user's friends array
 router.put('/unfavorite/:id', function (req,res) {
-	users.update({_id: req.params.id},{$pull:{friends: req.body._id}},function(err,updatedUser){
+	users.update({_id: req.params.id},{$pull:{friends: req.body.username}},function(err,updatedUser){
 		if(err) throw err;
 		res.send(updatedUser);
 	})
@@ -142,7 +142,7 @@ router.put('/unfavorite/:id', function (req,res) {
 
 // adds the ID of a user to the main USER's blocked array
 router.put('/block/:id', function (req,res) {
-	users.update({_id: req.params.id},{$push:{blocked: req.body._id}},function(err,updatedUser){
+	users.update({_id: req.params.id},{$push:{blocked: req.body.username}},function(err,updatedUser){
 		if(err) throw err;
 		res.send(updatedUser);
 	})
@@ -154,6 +154,15 @@ router.get('/user/:id', function(req,res){
 		res.send(userFound);
 	})
 })
+
+// finds one user by Username
+router.get('/user-u/:username', function(req,res){
+	users.findOne({username: req.params.username}, function(err, userFound){
+		if(err) throw err;
+		res.send(userFound);
+	})
+})
+
 
 // unblocks all, sets blocked array to empty array
 router.put('/unblock-all/:id', function( req, res){
