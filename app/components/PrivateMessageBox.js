@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import FaveResultItem from './FaveResultItem';
+import PrivateChatMSG from './PrivateChatMSG';
 
 export default class PrivateMessageBox extends React.Component {
 
@@ -19,6 +21,7 @@ export default class PrivateMessageBox extends React.Component {
     this.getMessage = this.getMessage.bind(this);
     this.getImage = this.getImage.bind(this);
     this.renderPrivate = this.renderPrivate.bind(this);
+    this.selectThis = this.selectThis.bind(this);
   }
 
   getMessage(e){
@@ -31,7 +34,15 @@ export default class PrivateMessageBox extends React.Component {
 
   	this.setState({
   		selectedFriend: e.target.value,
-  		status: 'private conn with '+e.target.value
+  		status: 'private conn with @'+e.target.value
+  	});
+  }
+
+  selectThis(friendUsername){
+  	document.getElementById('myprivates').innerHTML = '';
+  	this.setState({
+  		selectedFriend: friendUsername,
+  		status: 'private conn with @'+friendUsername
   	});
   }
 
@@ -96,11 +107,11 @@ export default class PrivateMessageBox extends React.Component {
 			    sent: moment().format('h:mm:ss a')
 		   }
 
-		   let msgArray = self.state.messages;
-    		msgArray.push(newMSG);
-		   	self.setState({
-		   		messages: msgArray
-		   	});
+		   // let msgArray = self.state.messages;
+    	// 	msgArray.push(newMSG);
+		   // 	self.setState({
+		   // 		messages: msgArray
+		   // 	});
 
 	        self.state.socket.emit('private', newMSG);
 	    };
@@ -113,38 +124,41 @@ export default class PrivateMessageBox extends React.Component {
 
   }
 
+
   renderPrivate(){
   	return(
-  		      	<div>
-      	  {this.props.user.name && <h4 className="whiteText">Private Messages</h4>}
+  		  <div>
+      	  {this.props.user.name && <h4 className="whiteText">Private Chat</h4>}
+      	  <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 privateList'>
+      	  	{this.props.user.name && this.props.user.friends.map( (friend, index)=>{
+      	  		return <button className='faveButton' key={index} value={friend}><FaveResultItem selectThis={this.selectThis} title={friend}  username={friend} /></button>
+		    })}
+      	  </div>
+      	  <div className='col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10'>
       	  <form onSubmit={this.handleSubmit}>
-	      	  <select onChange={this.handleChange}>
+	      	  {/*<select onChange={this.handleChange}>
 	      	  <option value="">Choose Friend</option>
 		      	  {this.props.user.name && this.props.user.friends.map( (friend, index)=>{
 		      	  	return <option key={index} value={friend}>{friend}</option>
 		      	  })}
 	      	  </select>
 	      	  <br/>
-	      	  <br/>
-	      	  <input id="privInput" autoComplete='off' placeholder="Type here..." className="form-control" type='text' onChange={this.getMessage}/>
-	      	  <button type='submit' className="btn themeButton">Send Private</button>
+	      	  <br/>*/}
+	      	  <input id="privInput" autoComplete='off' placeholder="Type here..." className="themeInput" type='text' onChange={this.getMessage}/>
+	      	  <button type='submit' className="btn connButton">Send Private</button>
 		  </form>
 			 <form>
-	          <label htmlFor="chatIMG"><span  className="glyphicon glyphicon-camera" aria-hidden="true"></span> Send Pics</label>
-	          <input id="chatIMG" className="form-control pinkBack whiteText" type="file" accept="image/*" onChange={this.getImage}/>
+	          <label className='btn connButton' htmlFor="chatIMG"><span  className="glyphicon glyphicon-camera" aria-hidden="true"></span> Send Pics</label>
+	          <input id="chatIMG" className="inputfile pinkBack whiteText" type="file" accept="image/*" onChange={this.getImage}/>
 	        </form>
 		  
 		  	<h5 className="purpleText">{this.state.status}</h5>
-	      <div id="myprivates" className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 backPurple text-center privateMessageHeight" style={{borderRadius:'20px'}}>
+	      <div id="myprivates" className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 well text-center privateMessageHeight" style={{borderRadius:'20px', backgroundColor:'#f2f2f2'}}>
 	      	{this.state.messages && this.state.messages.map( (msg,index)=>{
-	      		return <div key={index}>
-				      		<p style={{color: msg.from == this.props.user.username ? 'white': "lightpink" }} ><b>{msg.from}:</b> {msg.message}</p>
-				      		<img src={msg.file} alt="sent image"/>
-				      		<br/>
-				      		{msg.sent}
-			      		</div>
+	      		return <PrivateChatMSG key={index} photo={msg.file} user={this.props.user} sent={msg.sent} from={msg.from} message={msg.message} />
 	      	})}
 	      </div>
+	     </div>
       	</div>
   		)
   }
@@ -153,7 +167,7 @@ export default class PrivateMessageBox extends React.Component {
 
   render() {
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 backYellow clearBoth privateContainer">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 backBlue clearBoth privateContainer">
       	{this.props.user.name && this.renderPrivate()}
       </div>
     );

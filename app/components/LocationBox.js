@@ -23,7 +23,7 @@ export default class LocationBox extends React.Component {
 	  			<p><span className="glyphicon glyphicon-user" aria-hidden="true"></span> <strong><span className="textWhite">{this.props.user.name}, </span></strong><span>{this.props.user.identity}, </span><span>{this.props.user.age}</span></p>
 	  			<span> @{this.props.user.username}</span> <br/>
   				<span><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span> {this.props.user.email}</span><br/>
-  				<span><span className="glyphicon glyphicon-record" aria-hidden="true"></span> {this.props.user.latitude}, {this.props.user.longitude}</span>
+  				<span><span className="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {this.props.user.latitude}, {this.props.user.longitude}</span>
           <br/>
           <hr/>
   				<div className="backBlue" style={{borderRadius:'10px', marginTop:'10px'}}>
@@ -33,7 +33,7 @@ export default class LocationBox extends React.Component {
   				<br/>
           <UpdateLocationButton ID={this.props.user._id}/>
           <br/>
-  				{/*<DeleteAccountButton ID={this.props.user._id} user={this.props.user}/>*/}
+  				<DeleteAccountButton ID={this.props.user._id} user={this.props.user}/>
           </div>
 	  		</div>}
 

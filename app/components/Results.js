@@ -61,22 +61,21 @@ getDistance(e){
 	    	 		<option value='528000'>Within 100 Miles</option>
 	    	 	</select>
 	    	 </form>}
-	     	 {this.state.pickedDistance && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    
+	     	 {this.state.pickedDistance && this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    
 		</div>
-	    {this.state.resMSG === "We Found Some Peeps :)" && <div className="alert alert-success alert-dismissable orangeBack noBorder whiteText" role="alert">
+	    {this.state.resMSG === "We Found Some Peeps :)" && this.props.user.name && <div className="alert alert-success alert-dismissable orangeBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
 		</div>}
-		{this.state.resMSG === "No One Near You :(" && <div className="alert alert-danger alert-dismissable pinkBack noBorder whiteText" role="alert">
+		{this.state.resMSG === "No One Near You :(" && this.props.user.name && <div className="alert alert-danger alert-dismissable pinkBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
 		</div>}
 	    <br/>
 	    <div id="resultsHere" className="row text-center">
 	    {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
-	    {this.state.results && this.state.results.map( (doc,index)=>{
-
-	    	return <ResultItem updateUser={this.props.updateUser} userID={this.props.user._id} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
+	    {this.state.results && this.props.user.name && this.state.results.map( (doc,index)=>{
+	    	return <ResultItem updateUser={this.props.updateUser} userID={this.props.user._id} friends={doc.friends.length} status={doc.status} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
 	    })}
 	    </div>
 

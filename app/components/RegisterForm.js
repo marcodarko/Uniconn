@@ -218,11 +218,11 @@ handleSubmit(){
        
 			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Name</label>
-			    <input type="text" className="form-control inputBack" placeholder="Name" name="name" required onChange={this.getName}></input>
+			    <input type="text" className="form-control themeInput" placeholder="Name" name="name" required onChange={this.getName}></input>
 			  </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Age</label>
-          <input type="text" className="form-control inputBack" placeholder="Age" name="age" required onChange={this.getAge}></input>
+          <input type="text" className="form-control themeInput" placeholder="Age" name="age" required onChange={this.getAge}></input>
         </div>
         
          <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -252,22 +252,22 @@ handleSubmit(){
         </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Username</label>
-			    <input type="text" className="form-control inputBack" placeholder="Username" name="username" required onChange={this.getUsername}></input>
+			    <input type="text" className="form-control themeInput" placeholder="Username" name="username" required onChange={this.getUsername}></input>
 			  </div>
 			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Email</label>
-			    <input type="email" className="form-control inputBack" placeholder="Email" name="email" required onChange={this.getEmail}></input>
+			    <input type="email" className="form-control themeInput" placeholder="Email" name="email" required onChange={this.getEmail}></input>
 			  </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Password</label>
-			    <input type="password" className="form-control inputBack" placeholder="Password" name="password1" required onChange={this.getPassword1}></input>
+			    <input type="password" className="form-control themeInput" placeholder="Password" name="password1" required onChange={this.getPassword1}></input>
 			  </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
           <span style={{color: this.state.passwordMSG === "Passwords Match" ? '#00db8e': "#ff6464"}}>{this.state.passwordMSG}</span>
         </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Confirm Password</label>
-			    <input type="password" className="form-control inputBack" placeholder="Confirm Password" name="password2" required onChange={this.getPassword2}></input>
+			    <input type="password" className="form-control themeInput" placeholder="Confirm Password" name="password2" required onChange={this.getPassword2}></input>
 			  </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
           <label>Set Location</label><br/>

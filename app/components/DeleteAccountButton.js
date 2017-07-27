@@ -7,26 +7,41 @@ export default class UnblockAllButton extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-    	status: 'Delete Account'
+    	status: 'Delete Account',
+      clicked: false
     }
     this.deleteAccount = this.deleteAccount.bind(this);
+    this.confirm = this.confirm.bind(this);
   }
 
-  deleteAccount(yourID, userID){
-  	axios.delete('/delete-account/'+yourID,{_id: userID}).then( res=>{
-  		this.setState({
-  			status: 'Bye Girl'
-  		})
-  	});
+  deleteAccount(){
+  	if(this.props.ID === this.props.user._id){
+      axios.delete('/delete-account/'+this.props.ID,{_id: this.props.user._id}).then( res=>{
+        this.setState({
+          status: 'Bye Girl'
+        })
+      });
+    }else{
+      this.setState({
+          status: 'Not Same User'
+        })
+    }
+  }
+
+  confirm(){
+    this.setState({
+     clicked: true,
+     status: 'Confirm Delete'
+    })
   }
 
 
 
   render() {
     return (
-	 <button className="btn deleteButton" onClick={ ()=>{ this.deleteAccount(this.props.ID, this.props.user._id)}}>
+	 <button className="btn deleteButton" onClick={this.state.clicked ===false ? this.confirm : this.deleteAccount}>
       	{this.state.status}
-      </button>
+    </button>
  
     );
   }

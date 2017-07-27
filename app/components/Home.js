@@ -6,6 +6,7 @@ import Divider from '../components/Divider';
 import LoginForm from '../components/LoginForm';
 import Footer from '../components/Footer';
 import PrivateMessageBox from '../components/PrivateMessageBox';
+import axios from 'axios';
 
 export default class Home extends React.Component {
 
@@ -54,15 +55,21 @@ export default class Home extends React.Component {
   }
 
   updateUser(){
-    this.setState({
-      status: 'user updated'
-    })
+
+    axios.get('/user/'+this.state.user._id).then(res=>{
+      this.setState({
+      user: res.data
+      })
+    }).catch(err=>{
+      console.log(err);
+    });
+    
   }
 
   render() {
     return (
       <div className="container col-sm-12 col-md-12 col-lg-12 row">
-      	<Header user={this.state.user} login={this.login} register={this.register}/> 
+      	<Header sendUserToHome={this.sendUserToHome} user={this.state.user} login={this.login} register={this.register}/> 
         <LoginForm logged={this.logged} action={this.state.action} user={this.state.user} sendUserToHome={this.sendUserToHome}/>  
       	<Divider/>
       	<LocationBox user={this.state.user}/> 

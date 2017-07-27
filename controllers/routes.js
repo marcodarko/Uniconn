@@ -114,7 +114,7 @@ router.post('/login', function(req, res){
 		else{
 			res.end();
 		}
-	})
+	});
 
   
  });
@@ -192,6 +192,19 @@ router.put('/api/update-location/:id', function( req, res){
 	})
 })
 
+router.put('/online/:id', function (req,res) {
+	users.update({_id: req.params.id},{$set:{status:'online'}},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	});
+});
+
+router.put('/offline/:id', function (req,res) {
+	users.update({_id: req.params.id},{$set:{status:'offline'}},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	});
+});
 
 
 

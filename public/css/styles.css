@@ -13,7 +13,7 @@ h1, h2, h3, h4 ,h5{
 }
 
 body{
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 select{
@@ -21,6 +21,195 @@ select{
   color: white;
   padding: 10px;
   border: none;
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotate {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
+.rainPurple{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8251c6+0,f274df+100 */
+background: rgb(130,81,198); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(130,81,198,1) 0%, rgba(242,116,223,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(130,81,198,1) 0%,rgba(242,116,223,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(130,81,198,1) 0%,rgba(242,116,223,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8251c6', endColorstr='#f274df',GradientType=0 ); /* IE6-9 */
+}
+
+.rainPink{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7abc+0,f9618c+100 */
+background: rgb(255,122,188); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,122,188,1) 0%, rgba(249,97,140,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,122,188,1) 0%,rgba(249,97,140,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,122,188,1) 0%,rgba(249,97,140,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7abc', endColorstr='#f9618c',GradientType=0 ); /* IE6-9 */
+}
+
+.rainOrange{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9618c+0,ff9d7a+100 */
+background: rgb(249,97,140); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(249,97,140,1) 0%, rgba(255,157,122,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(249,97,140,1) 0%,rgba(255,157,122,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(249,97,140,1) 0%,rgba(255,157,122,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9618c', endColorstr='#ff9d7a',GradientType=0 ); /* IE6-9 */
+}
+
+.rainYellow{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff9d7a+0,ffd563+100 */
+background: rgb(255,157,122); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,157,122,1) 0%, rgba(255,213,99,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,157,122,1) 0%,rgba(255,213,99,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,157,122,1) 0%,rgba(255,213,99,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9d7a', endColorstr='#ffd563',GradientType=0 ); /* IE6-9 */
+}
+
+.rainGreen{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffd563+0,74ed8a+100 */
+background: rgb(255,213,99); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,213,99,1) 0%, rgba(116,237,138,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,213,99,1) 0%,rgba(116,237,138,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,213,99,1) 0%,rgba(116,237,138,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd563', endColorstr='#74ed8a',GradientType=0 ); /* IE6-9 */
+}
+
+.rainBlue{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#74ed8a+0,63daff+100 */
+background: rgb(116,237,138); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(116,237,138,1) 0%, rgba(99,218,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(116,237,138,1) 0%,rgba(99,218,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(116,237,138,1) 0%,rgba(99,218,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#74ed8a', endColorstr='#63daff',GradientType=0 ); /* IE6-9 */
+}
+
+.rainPurple2{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9359e5+0,63daff+100 */
+background: rgb(147,89,229); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(147,89,229,1) 0%, rgba(99,218,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(147,89,229,1) 0%,rgba(99,218,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(147,89,229,1) 0%,rgba(99,218,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9359e5', endColorstr='#63daff',GradientType=0 ); /* IE6-9 */
+}
+
+.privateList{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b44bf+0,a66de8+51,7b44bf+100 */
+background: rgb(123,68,191); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(123,68,191,1) 0%, rgba(166,109,232,1) 51%, rgba(123,68,191,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(123,68,191,1) 0%,rgba(166,109,232,1) 51%,rgba(123,68,191,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(123,68,191,1) 0%,rgba(166,109,232,1) 51%,rgba(123,68,191,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7b44bf', endColorstr='#7b44bf',GradientType=0 ); /* IE6-9 */
+  border-radius: 10px;
+  text-align: center;
+  min-height: 300px;
+  max-height: 400px;
+  overflow: scroll;
+  padding: 0px;
+}
+
+.privateListItem{
+  display: block;
+  text-align: center;
+  color: white;
+  padding: 15px;
+  background: rgba(0,0,0,.0);
+  margin:0;
+}
+
+.privateListItem:hover{
+  display: block;
+  text-align: center;
+  color: hotpink;
+  padding: 15px;
+  background: rgba(0,0,0,.2);
+  margin:0;
+  cursor:pointer;
+}
+  
+
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}
+
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
+}
+
+.themeInput{
+  outline: none;
+  background: rgba(0,0,0,.6);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  width: 80%;
+  padding: 6px;
+}
+
+.themeInput:focus{
+  outline: none;
+  background: rgba(0,0,0,.8);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  width: 80%;
+  padding: 6px;
+}
+
+.themeSelect{
+  background: purple;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  outline: none;
 }
 
 
@@ -457,7 +646,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
 	border: 2px solid #fff25f;
 	text-decoration: none;
 	color: #fff25f;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .themeButton:focus{ 
@@ -468,7 +657,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
   border: 2px solid lightyellow;
   text-decoration: none;
   color: lightyellow;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
@@ -490,7 +679,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
   border: 2px solid #4ef0b6;
   text-decoration: none;
   color: white;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .themeButton2:focus{ 
@@ -501,7 +690,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
   border: 2px solid hotpink;
   text-decoration: none;
   color: hotpink;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
@@ -535,7 +724,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc5dd0ef', e
   text-decoration: none;
   color: white;
   box-shadow: 0px 0px 2px lightblue;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .connButton:focus{ 
@@ -550,7 +739,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffc063', e
   border: none;
   text-decoration: none;
   color: white;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
@@ -695,6 +884,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe45e', end
     background-color: white;
     box-shadow: 3px 3px 6px #a807c7;
     opacity: .9;
+    position: relative;
 }
 
 .resultItemBox:hover{
@@ -723,6 +913,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b738af', e
   padding: 5px;
   box-shadow: 2px 2px 4px lightblue;
 
+}
+
+.onlineStatus{
+  position: absolute;
+  top: 0;
+  margin-top: 5px;
 }
 
 .resContainer{
@@ -755,7 +951,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b738af', e
   border: 2px solid hotpink;
   text-decoration: none;
   color: hotpink;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .block:focus{ 
@@ -765,7 +961,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b738af', e
   border: 2px solid lightpink;
   text-decoration: none;
   color: lightpink;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
@@ -785,7 +981,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b738af', e
   border: 2px solid #34b5fd;
   text-decoration: none;
   color: #34b5fd;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .fave:focus{ 
@@ -795,7 +991,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b738af', e
   border: 2px solid lightblue;
   text-decoration: none;
   color: lightblue;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
@@ -820,7 +1016,7 @@ margin:5px;
   text-decoration: none;
   color: white;
   box-shadow: 0px 0px 2px lightblue;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .loginButton:focus{
@@ -831,7 +1027,7 @@ margin:5px;
   border: none;
   text-decoration: none;
   color: white;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
@@ -851,7 +1047,7 @@ margin:5px;
   border: 2px solid #9e3ef7;
   text-decoration: none;
   color: #9e3ef7;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .fave2:focus{ 
@@ -861,12 +1057,12 @@ margin:5px;
   border: 2px solid #aa62ec;
   text-decoration: none;
   color: #aa62ec;
-  cursor: url('./uniicon.ico'),default;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
 .favesList{
-  max-width: 100%;
+  width: 100%;
   overflow-x: scroll;
   height: 70px;
   box-sizing: border-box;
@@ -875,8 +1071,7 @@ margin:5px;
 }
 
 .faveListItem{
-  width: 60px;
-  height: 60px;
+  width: 100%;
   display: inline-block;
   text-align: center;
   margin: 3px;
@@ -884,25 +1079,44 @@ margin:5px;
   cursor:pointer;
 }
 
+.faveButton{
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.faveButton:hover{
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.faveButton:focus{
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
 .favesListImg{
   box-shadow: 2px 2px 4px purple;
   border-radius: 100%;
   width: 60px;
-  border:2px white dotted;
+  height: 60px;
+  border:3px white solid;
 }
 
 .favesListImg:hover{
   box-shadow: 0px 0px 4px purple;
   border-radius: 100%;
   width: 60px;
-  border:2px hotpink solid;
+  border:3px white solid;
 }
 
 .favesListImg:focus{
   box-shadow: 0px 0px 4px purple;
   border-radius: 100%;
   width: 60px;
-  border:2px yellow solid;
+  border:3px yellow solid;
   outline: none !important;
 }
 
@@ -924,7 +1138,7 @@ margin:5px;
 .deleteButton{ 
   margin:5px;
   background-color: transparent;
-  padding: 10px;
+  padding: 5px;
   border-radius: 7px;
   border: 2px solid white;
   text-decoration: none;
@@ -933,24 +1147,24 @@ margin:5px;
 
 .deleteButton:hover{
   margin:5px; 
-  background-color: red;
-  padding: 10px;
+  background-color: transparent;
+  padding: 5px;
   border-radius: 7px;
-  border: 2px solid white;
+  border: 2px solid red;
   text-decoration: none;
-  color: white;
-  cursor: url('./uniicon.ico'),default;
+  color: red;
+  /*cursor: url('./uniicon.ico'),default;*/
 }
 
 .deleteButton:focus{
   margin:5px; 
   background-color: red;
-  padding: 10px;
+  padding: 5px;
   border-radius: 7px;
   border: 2px solid red;
   text-decoration: none;
-  color: red;
-  cursor: url('./uniicon.ico'),default;
+  color: white;
+  /*cursor: url('./uniicon.ico'),default;*/
   outline: none !important;
 }
 
@@ -996,8 +1210,8 @@ margin:5px;
 }
 
 .privateMessageHeight{
-  min-height: 300px;
-  max-height: 500px;
+  min-height: 200px;
+  max-height: 400px;
   overflow: scroll;
 }
 
@@ -1005,8 +1219,24 @@ margin:5px;
   padding: 10px;
 }
 
+.privateMSG{
+  position: relative;
+  border-radius: 10px;
+  padding: 7px;
+  box-shadow: 2px 2px 2px violet;
+  width: 80%;
+  color: white;
+  margin-bottom: 3px;
+  clear: both;
+}
 
-
+.privateMSGsent{
+  position: absolute;
+  top:0;
+  right: 0;
+  margin:5px;
+  font-size: 9px;
+}
 
 
 

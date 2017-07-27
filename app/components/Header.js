@@ -12,8 +12,15 @@ export default class Header extends React.Component {
   }
 
   logout(){
-  	axios.get('/logout');
+
+  	axios.put('/offline/'+this.props.user._id).then(res =>{
+  		var gone ={};
+  		this.props.sendUserToHome(gone);
+  	});
+  	
   }
+
+
 
 
   render() {

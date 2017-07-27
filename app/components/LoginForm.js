@@ -52,6 +52,7 @@ handleSubmit(){
     
     this.props.logged();
     this.props.sendUserToHome(res.data);
+    axios.put('/online/'+this.props.user._id);
     this.setState({
       loginMSG: "Logged In"
     })
@@ -71,11 +72,11 @@ renderLogin(){
 			<form >
 			  <div className="form-group">
 			    <label className="purpleText">Username</label>
-			    <input style={{width:'70%', margin:'auto'}} type="text" className="form-control inputBack" name="username" placeholder="Username" required onChange={this.getUsername}></input>
+			    <input style={{width:'70%', margin:'auto'}} type="text" className="form-control themeInput" name="username" placeholder="Username" required onChange={this.getUsername}></input>
 			  </div>
 			  <div className="form-group">
 			    <label className="purpleText">Password</label>
-			    <input style={{width:'70%', margin:'auto'}} type="password" className="form-control inputBack" name="password" placeholder="Password" required onChange={this.getPassword}></input>
+			    <input style={{width:'70%', margin:'auto'}} type="password" className="form-control themeInput" name="password" placeholder="Password" required onChange={this.getPassword}></input>
 			  </div>
 			  <button type="button" className="btn loginButton" onClick={this.handleSubmit} >Submit</button>
         <br/>
@@ -97,7 +98,7 @@ renderRegistration(){
     	<div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  col-xl-12 backOrange text-center clearBoth" >
     		{this.props.action ==="login" && this.renderLogin()}
     		{this.props.action ==="register" && this.renderRegistration()}
-        {this.props.action === 'logged' && <p style={{margin:'8px'}} className="purpleText">Hello, <strong>{this.props.user.username}</strong></p>}
+        {this.props.action === 'logged' && this.props.user.name && <p style={{margin:'8px'}} className="purpleText">Hello, <strong>{this.props.user.username}</strong></p>}
 		</div>
     );
   }

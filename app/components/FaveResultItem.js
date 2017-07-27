@@ -6,8 +6,11 @@ export default class FaveResultItem extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-    	resultUser:{}
+    	resultUser:{},
+      hovered: false
     }
+    this.Hover = this.Hover.bind(this);
+    this.unHover = this.unHover.bind(this);
   }
 
   componentDidMount(){
@@ -19,12 +22,22 @@ export default class FaveResultItem extends React.Component {
   	});
   }
 
+  Hover(){
+    this.setState({
+        hovered: true
+    });
+  }
+
+  unHover(){
+    this.setState({
+        hovered: false
+    });
+  }
+
 
   render() {
     return (
-      <div className="faveListItem">
-      	<img title={this.state.resultUser.username} className="favesListImg" src={this.state.resultUser.photo || './images/default.png'} alt='my fave'/>
-      </div>
+      	<img style={{border: this.state.resultUser.status === "online"? '#b6fc5e 3px solid' : '#fa4d76 3px solid' }} onClick={ ()=>{this.props.selectThis(this.state.resultUser.username)}} onMouseEnter={this.Hover} onMouseLeave={this.unHover} title={this.state.resultUser.username} className={this.state.hovered === true? 'favesListImg heartbeat': 'favesListImg'} src={this.state.resultUser.photo || './images/default.png'} alt='my fave'/>
     );
   }
 }
