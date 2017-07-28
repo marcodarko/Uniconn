@@ -107,11 +107,11 @@ export default class PrivateMessageBox extends React.Component {
 			    sent: moment().format('h:mm:ss a')
 		   }
 
-		   // let msgArray = self.state.messages;
-    	// 	msgArray.push(newMSG);
-		   // 	self.setState({
-		   // 		messages: msgArray
-		   // 	});
+		   let msgArray = self.state.messages;
+    		msgArray.push(newMSG);
+		   	self.setState({
+		   		messages: msgArray
+		   	});
 
 	        self.state.socket.emit('private', newMSG);
 	    };

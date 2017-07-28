@@ -6,6 +6,7 @@ import Divider from '../components/Divider';
 import LoginForm from '../components/LoginForm';
 import Footer from '../components/Footer';
 import PrivateMessageBox from '../components/PrivateMessageBox';
+import InboxBox from '../components/InboxBox';
 import axios from 'axios';
 
 export default class Home extends React.Component {
@@ -73,6 +74,7 @@ export default class Home extends React.Component {
         <LoginForm logged={this.logged} action={this.state.action} user={this.state.user} sendUserToHome={this.sendUserToHome}/>  
       	<Divider/>
       	<LocationBox user={this.state.user}/> 
+        <InboxBox sendUserToHome={this.sendUserToHome} user={this.state.user}/>
         <PrivateMessageBox user={this.state.user} updateUser={this.updateUser} />
       	<Results user={this.state.user} updateUser={this.updateUser}/>
       	<Divider/>

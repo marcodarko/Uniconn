@@ -211,7 +211,7 @@ handleSubmit(){
 
     return (
 
-    	<div className="container registerContainer row">
+    	<div className="container registerContainer">
       <h5 className="whiteText">New User Registration</h5>
       <hr/>
 			<form>

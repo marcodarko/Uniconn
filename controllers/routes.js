@@ -5,6 +5,7 @@ var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var geolib = require('geolib');
+var conns = require('../models/Conns');
 
 // Get Homepage
 router.get('/', function(req, res){
@@ -153,7 +154,7 @@ router.get('/user/:id', function(req,res){
 		if(err) throw err;
 		res.send(userFound);
 	})
-})
+});
 
 // finds one user by Username
 router.get('/user-u/:username', function(req,res){
@@ -161,7 +162,7 @@ router.get('/user-u/:username', function(req,res){
 		if(err) throw err;
 		res.send(userFound);
 	})
-})
+});
 
 
 // unblocks all, sets blocked array to empty array
@@ -170,7 +171,7 @@ router.put('/unblock-all/:id', function( req, res){
 		if(err) throw err;
 		res.send(updatedUser);
 	})
-})
+});
 
 // deletes user from DB
 router.delete('/delete-account/:id', function (req,res) {
@@ -182,7 +183,7 @@ router.delete('/delete-account/:id', function (req,res) {
 			res.send(confirmation);
 		})
 	}
-})
+});
 
 // unblocks all, sets blocked array to empty array
 router.put('/api/update-location/:id', function( req, res){
@@ -190,7 +191,7 @@ router.put('/api/update-location/:id', function( req, res){
 		if(err) throw err;
 		res.send(updatedUser);
 	})
-})
+});
 
 router.put('/online/:id', function (req,res) {
 	users.update({_id: req.params.id},{$set:{status:'online'}},function(err,updatedUser){
@@ -206,6 +207,29 @@ router.put('/offline/:id', function (req,res) {
 	});
 });
 
+//  CONNS ROUTES
+
+router.post('/getconn', function (req, res){
+	console.log("1",req.body.user1 );
+	console.log("2",req.body.user2 );
+	conns.find({ conn: [ req.body.user1, req.body.user2 ] }, function(err, Conn){
+		if(err) throw err;
+		res.send(Conn);
+	});
+});
+
+router.post('/conn/:id', function (req, res){
+	newConn = new conns(req.body);
+	newConn.save();
+	res.send(newConn);
+});
+
+router.put('/conn/:connID', function (req, res){
+	conns.update({_id: req.params.connID },{$push:{messages: req.body}}, function(err, Conn){
+		if(err) throw err;	
+		res.send(Conn);
+	});
+});
 
 
 module.exports = router;

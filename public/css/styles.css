@@ -135,6 +135,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7b44bf', end
   max-height: 400px;
   overflow: scroll;
   padding: 0px;
+  border: 2px lightpink solid;
 }
 
 .privateListItem{
@@ -1238,7 +1239,28 @@ margin:5px;
   font-size: 9px;
 }
 
+.InboxMessage{
+  background: #f2f2f2;
+  margin-bottom: 3px;
+  padding: 5px;
+  border: 2px solid #323232;
+  border-radius: 5px;
+  position: relative;
+}
 
+.InboxCont{
+  min-height: 100px;
+  max-height: 400px;
+  overflow: scroll;
+}
+
+.InboxSpan{
+  position: absolute;
+  top:0;
+  right: 0;
+  margin:5px;
+  font-size: 10px;
+}
 
 
 
