@@ -131,8 +131,10 @@ export default class PrivateMessageBox extends React.Component {
       	  {this.props.user.name && <h4 className="whiteText">Private Chat</h4>}
       	  <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 privateList'>
       	  	{this.props.user.name && this.props.user.friends.map( (friend, index)=>{
-      	  		return <button className='faveButton' key={index} value={friend}><FaveResultItem selectThis={this.selectThis} title={friend}  username={friend} /></button>
-		    })}
+              if(friend !== this.props.user.username){
+      	  		   return <button className='faveButton' key={index} value={friend}><FaveResultItem selectThis={this.selectThis} title={friend}  username={friend} /></button>
+              }
+		         })}
       	  </div>
       	  <div className='col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10'>
       	  <form onSubmit={this.handleSubmit}>

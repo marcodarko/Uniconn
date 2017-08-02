@@ -21,6 +21,7 @@ export default class LocationBox extends React.Component {
 	  		<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 backGreen  text-center purpleText" style={{borderRadius:'10px', padding:'10px', marginBottom:'10px'}}>
 	  			<img className="jello-horizontal" id="profilePhoto" src={this.props.user.photo || './images/default.png'} alt="user photo"/> 
 	  			<p><span className="glyphicon glyphicon-user" aria-hidden="true"></span> <strong><span className="textWhite">{this.props.user.name}, </span></strong><span>{this.props.user.identity}, </span><span>{this.props.user.age}</span></p>
+          <p><b>{this.props.user.friends.length}</b> friends</p>
 	  			<span> @{this.props.user.username}</span> <br/>
   				<span><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span> {this.props.user.email}</span><br/>
   				<span><span className="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {this.props.user.latitude}, {this.props.user.longitude}</span>
@@ -37,7 +38,7 @@ export default class LocationBox extends React.Component {
           </div>
 	  		</div>}
 
-	  		{this.props.user.name && <FaveBox user={this.props.user}/>}	
+	  		{this.props.user.name && <FaveBox user={this.props.user} updateUser={this.props.updateUser}/>}	
 		</div>
 	</div>
     );

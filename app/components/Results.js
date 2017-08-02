@@ -63,10 +63,6 @@ getDistance(e){
 	    	 </form>}
 	     	 {this.state.pickedDistance && this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    
 		</div>
-	    {this.state.resMSG === "We Found Some Peeps :)" && this.props.user.name && <div className="alert alert-success alert-dismissable orangeBack noBorder whiteText" role="alert">
-		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		  {this.state.resMSG}
-		</div>}
 		{this.state.resMSG === "No One Near You :(" && this.props.user.name && <div className="alert alert-danger alert-dismissable pinkBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  {this.state.resMSG}
@@ -77,6 +73,7 @@ getDistance(e){
 	    {this.state.results && this.props.user.name && this.state.results.map( (doc,index)=>{
 	    	return <ResultItem updateUser={this.props.updateUser} userID={this.props.user._id} friends={doc.friends.length} status={doc.status} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
 	    })}
+
 	    </div>
 
 	  </div>

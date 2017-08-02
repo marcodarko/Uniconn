@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import axios from 'axios';
 import RegisterForm from './RegisterForm';
+import ReactHowler from 'react-howler';
 
 export default class LoginForm extends React.Component{
 
@@ -70,6 +71,7 @@ handleSubmit(){
 renderLogin(){
 	return(<div>
           <h5 className="whiteText">Welcome Back</h5>
+          <img className="heroImg" src="./images/loginbanner.jpg" alt='login banner uniconn'/>
 			<form >
 			  <div className="form-group">
 			    <label className="purpleText">Username</label>
@@ -97,6 +99,12 @@ renderRegistration(){
     return (
 
     	<div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  col-xl-12 backOrange text-center clearBoth" >
+      {/*<ReactHowler
+            src='https://freesound.org/people/udoxas/sounds/265115/download/265115__udoxas__popping.wav'
+            playing={this.state.playing}
+            loop={false}
+            html5={true}
+         />*/}
     		{this.props.action ==="login" && this.renderLogin()}
     		{this.props.action ==="register" && this.renderRegistration()}
         {this.props.action === 'logged' && this.props.user.name && <p style={{margin:'8px'}} className="purpleText">Hello, <strong>{this.props.user.username}</strong></p>}

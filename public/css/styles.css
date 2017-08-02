@@ -222,6 +222,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7b44bf', end
   margin:4px;
 }
 
+.profilePhoto{
+  width:40%;
+  border-radius: 100%;
+  border: 15px solid transparent;
+  border:2px solid lightpink;
+  margin:4px;
+}
+
 .rainbowBack{
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcf192+0,8cffd6+16,82dbff+32,df89ff+48,ff82be+65,ffb677+82,ffee99+100 */
 background: rgb(252,241,146); /* Old browsers */
@@ -1243,13 +1251,12 @@ margin:5px;
   background: #f2f2f2;
   margin-bottom: 3px;
   padding: 5px;
-  border: 2px solid #323232;
+  border: 2px solid #27a5e0;
   border-radius: 5px;
   position: relative;
 }
 
 .InboxCont{
-  min-height: 100px;
   max-height: 400px;
   overflow: scroll;
 }
@@ -1262,10 +1269,55 @@ margin:5px;
   font-size: 10px;
 }
 
+.trashButton{
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 7px;
+  border: 2px solid hotpink;
+  text-decoration: none;
+  color: hotpink;
+  outline: none;
+  position: absolute;
+  bottom:0;
+  right: 0;
+  margin:5px;
+  font-size: 10px;
+}
 
+.trashButton:hover{
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 7px;
+  border: 2px solid purple;
+  text-decoration: none;
+  color: purple;
+  outline: none;
+  position: absolute;
+  bottom:0;
+  right: 0;
+  margin:5px;
+  font-size: 10px;
+}
 
+.trashButton:focus{
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 7px;
+  border: 2px solid violet;
+  text-decoration: none;
+  color: violet;
+  outline: none;
+  position: absolute;
+  bottom:0;
+  right: 0;
+  margin:5px;
+  font-size: 10px;
+}
 
-
+.verticalCenter {
+  display: flex;
+  align-items: center;
+}
 
 
 

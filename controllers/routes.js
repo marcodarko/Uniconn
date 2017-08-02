@@ -212,7 +212,7 @@ router.put('/offline/:id', function (req,res) {
 router.post('/getconn', function (req, res){
 	console.log("1",req.body.user1 );
 	console.log("2",req.body.user2 );
-	conns.find({ conn: [ req.body.user1, req.body.user2 ] }, function(err, Conn){
+	conns.find({ $and: [ { conn: req.body.user1 }, { conn: req.body.user2 } ] }, function(err, Conn){
 		if(err) throw err;
 		res.send(Conn);
 	});
@@ -228,6 +228,13 @@ router.put('/conn/:connID', function (req, res){
 	conns.update({_id: req.params.connID },{$push:{messages: req.body}}, function(err, Conn){
 		if(err) throw err;	
 		res.send(Conn);
+	});
+});
+
+router.put('/delete-comment/:id', function (req, res){
+	conns.update({_id: req.params.id},{$pull:{messages: {message: req.body.message} }}, function(err, Res){
+		if(err) throw err;	
+		res.send(Res);
 	});
 });
 
