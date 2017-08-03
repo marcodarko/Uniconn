@@ -91,7 +91,7 @@ export default class MessagesBox extends React.Component {
   render() {
   	var self =this;
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 backOrange messageBox">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rainOrange messageBox">
       {this.props.user.name && <h4 className="whiteText">General Chat</h4>}
 	  	<div id="messages" className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 well">
 	  		{/*<div className="myMSG"><strong>Me: </strong> message</div>

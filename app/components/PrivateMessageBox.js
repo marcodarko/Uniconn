@@ -169,7 +169,7 @@ export default class PrivateMessageBox extends React.Component {
 
   render() {
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 backBlue clearBoth privateContainer">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rainPink clearBoth privateContainer" style={{borderRadius:'10px',border:'2px lightpink solid'}}>
       	{this.props.user.name && this.renderPrivate()}
       </div>
     );

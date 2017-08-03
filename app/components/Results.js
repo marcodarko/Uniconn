@@ -26,7 +26,7 @@ getDistance(e){
 
     	 axios.post('/api/find-all',{lat: this.props.user.latitude, lon: this.props.user.longitude, distance:this.state.pickedDistance}).then( res=>{
 
-			console.log("API res",res.data);
+			//console.log("API res",res.data);
 			this.setState({
 				resMSG: "We Found Some Peeps :)",
 				results: res.data
@@ -71,12 +71,15 @@ getDistance(e){
 	    <div id="resultsHere" className="row text-center">
 	    {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
 	    {this.state.results && this.props.user.name && this.state.results.map( (doc,index)=>{
-	    	return <ResultItem updateUser={this.props.updateUser} userID={this.props.user._id} friends={doc.friends.length} status={doc.status} key={index}  photo={doc.photo} name={doc.name} username={doc.username} id={doc._id}/>
+	    	if(doc.username !== this.props.user.username){
+	    		return <ResultItem updateUser={this.props.updateUser} userID={this.props.user._id} friends={doc.friends.length} status={doc.status} key={index}  photo={doc.photo} name={doc.name} username={doc.username} herefor={doc.herefor} description={doc.description} id={doc._id}/>
+	    	}
 	    })}
 
 	    </div>
 
 	  </div>
+
 	</div>
     );
   }

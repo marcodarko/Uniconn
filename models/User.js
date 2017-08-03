@@ -47,6 +47,9 @@ var UserSchema = mongoose.Schema({
 	},
 	status:{
 		type: String
+	},
+	description:{
+		type: String
 	}
 }, { collection: 'users' });
 

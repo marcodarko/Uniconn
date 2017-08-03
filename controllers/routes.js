@@ -6,6 +6,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var geolib = require('geolib');
 var conns = require('../models/Conns');
+var moment = require('moment');
 
 // Get Homepage
 router.get('/', function(req, res){
@@ -212,9 +213,29 @@ router.put('/offline/:id', function (req,res) {
 router.post('/getconn', function (req, res){
 	console.log("1",req.body.user1 );
 	console.log("2",req.body.user2 );
-	conns.find({ $and: [ { conn: req.body.user1 }, { conn: req.body.user2 } ] }, function(err, Conn){
+	conns.findOne({ $and: [ { conn: req.body.user1 }, { conn: req.body.user2 } ] }, function(err, Conn){
 		if(err) throw err;
-		res.send(Conn);
+		if(!Conn){
+
+			let newCon= new conns({
+				messages:[{
+		  		author:"UniConn",
+		  		message:"You're a match! We'll leave you two alone...",
+		  		sent: moment().format('h:mm:ss a'),
+		  		read: false
+		  		}],
+				conn:[req.body.user1,req.body.user2]
+				});
+
+			newCon.save(function(err, newConn){
+				if(err) throw err;
+				//console.log("newConn WORKED", newConn);
+				return res.send(newConn);
+			})
+		}
+		if(Conn){
+			return res.send(Conn);
+		}
 	});
 });
 

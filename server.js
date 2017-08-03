@@ -79,7 +79,7 @@ app.use(methodOverride("_method"));
 // MongoDB configuration (Change this URL to your own DB)
 //mongoose.connect("mongodb://artofmarco@gmail.com:Italiano1@ds157342.mlab.com:57342/heroku_sb3hh2c2");
 //mongoose.connect("mongodb://localhost/uniconn2");
-mongoURI = 'mongodb://localhost/uniconn2';
+mongoURI = 'localhost/uniconn2';
 MONGOLAB_URI = "mongodb://heroku_sb3hh2c2:dua059evi70hscv8h11eje5mpt@ds157342.mlab.com:57342/heroku_sb3hh2c2"
 
 mongoose.connect(MONGOLAB_URI);

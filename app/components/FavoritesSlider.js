@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import InboxBox from './InboxBox';
 
 export default class FavoritesSlider extends React.Component {
 
@@ -10,7 +11,6 @@ export default class FavoritesSlider extends React.Component {
     	favoriteInfo:{},
     	currentFriend: 0,
     	message:''
-
     }
     this.getNext = this.getNext.bind(this);
     this.getPrevious = this.getPrevious.bind(this);
@@ -18,6 +18,7 @@ export default class FavoritesSlider extends React.Component {
     this.renderMain = this.renderMain.bind(this);
     this.renderFriend = this.renderFriend.bind(this);
   }
+
 
   getNext(){
 
@@ -53,7 +54,8 @@ export default class FavoritesSlider extends React.Component {
 
   	axios.get('/user-u/'+this.props.user.friends[this.state.currentFriend]).then(res=>{
   		this.setState({
-  			favoriteInfo: res.data
+  			favoriteInfo: res.data,
+  			myguy: res.data.username
   		});
   	}).catch(err=>{
   		this.setState({
@@ -87,24 +89,32 @@ export default class FavoritesSlider extends React.Component {
 		      		{!this.state.favoriteInfo.name && <button className="btn connButton" onClick={()=>{this.renderFriend()}}>My Favorites</button>} 
 		      		{this.state.favoriteInfo.name && 
 			      		<div className="whiteText">
-			      		<img className="profilePhoto slide-in-fwd-center" src={this.state.favoriteInfo.photo || './images/default.png'} alt="favorite uniconn"/>     		
+			      		<img className="profilePhoto slide-in-fwd-center" src={this.state.favoriteInfo.photo || './images/default.png'} alt="favorite uniconn"/> 
+			      		{this.state.favoriteInfo.friends.map( (friend,index)=>{
+			      			if(friend === this.props.user.username){
+			      				return <h4 key={index} className="heartbeat" style={{color: '#fff153'}}><span className="glyphicon glyphicon-heart" aria-hidden="true"></span> You're a Match!</h4>
+			      			}
+			      		})}    		
 			      		<h5>@{this.state.favoriteInfo.username}</h5>
 			      		<p>{this.state.favoriteInfo.name}, {this.state.favoriteInfo.age}</p>
 			      		<p>{this.state.favoriteInfo.identity}</p>
 			      		<p><b>Here for:</b> {this.state.favoriteInfo.herefor}</p>
 			      		<button className="btn connButton" onClick={()=>{this.UnfavoriteThis()}}>REMOVE</button>
 			      		<br/>
+			      		<br/>
 			      		</div>
 		      		}
+
 		      	</div>
 		      	<div className="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-center verticalCenter"><button onClick={()=>{ this.getNext()}} className="btn themeButton"><span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button></div>
+		      	{this.state.favoriteInfo.name && <InboxBox user={this.props.user} favoriteInfo={this.state.favoriteInfo}/>}
 		    </div>
   		)
   }
 
   render() {
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rainPurple clearBoth">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rainPurple clearBoth" style={{padding:'10px'}}>
       	{this.props.user.name && this.renderMain()}
       </div>
     );

@@ -9,14 +9,13 @@ export default class InboxBox extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-    	selectedFriend:'',
-    	results:[],
+    	results:{},
     	message:'',
     	yourMSG:'',
     	connID:'',
     	playing: false
     }
-    this.getFriend = this.getFriend.bind(this);
+    //this.getFriend = this.getFriend.bind(this);
     this.renderInbox = this.renderInbox.bind(this);
     this.getConn = this.getConn.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -31,7 +30,7 @@ export default class InboxBox extends React.Component {
   		this.setState({
   			message: 'message deleted'
   		})
-  		this.getConn(this.state.selectedFriend);
+  		this.getConn();
 
   	}).catch( err=>{
   		this.setState({
@@ -40,29 +39,22 @@ export default class InboxBox extends React.Component {
   	});
   }
 
-  getFriend(e){
-  	
+
+  getConn(){
+
   	this.setState({
-  		results:[],
-  		selectedFriend: e.target.value,
-  		playing:true
+  		results: {}
   	});
-  	this.getConn(e.target.value);
-  	//document.getElementById('inboxContainer').innerHTML = '';
-
-  }
-
-  getConn(friendUsername){
 
   	let info = { user1: this.props.user.username,
-  				user2: friendUsername}
-  	console.log('info', info);
+  				user2: this.props.favoriteInfo.username}
+  	//console.log('info', info);
 
   	axios.post('/getconn', info ).then( res=>{
-  		console.log('getConn results', res.data);
+  		//console.log('getConn results', res.data);
   		this.setState({
-  			results: res.data[0],
-  			connID: res.data[0]._id
+  			results: res.data,
+  			connID: res.data._id
   		});
   		
   	}).catch(err=>{
@@ -86,9 +78,7 @@ export default class InboxBox extends React.Component {
   	e.preventDefault();
   	var self = this;
   	document.getElementById('inboxInput').value = '';
-  	//console.log('this', self);
-  	//var check = self.getConn(self.state.selectedFriend);
-  	//console.log('check results',self.state.results );
+
   	if(self.state.results){
 
   		  	let newMSG={
@@ -101,7 +91,7 @@ export default class InboxBox extends React.Component {
 		  		self.setState({
 		  			message: 'message sent!'
 		  		})
-		  		self.getConn(self.state.selectedFriend);
+		  		self.getConn();
 
 		  	}).catch(err=>{
 		  		self.setState({
@@ -113,7 +103,7 @@ export default class InboxBox extends React.Component {
 
 		  }else{
 		  	var newConn={
-					conn: [self.props.user.username, self.state.selectedFriend],
+					conn: [self.props.user.username, self.props.favoriteInfo.username],
 					messages:[{
 							author:self.props.user.username,
 					  		message: self.state.yourMSG,
@@ -127,7 +117,7 @@ export default class InboxBox extends React.Component {
 		  		self.setState({
 		  			message: 'message sent!'
 		  		});
-		  		self.getConn(self.state.selectedFriend);
+		  		self.getConn();
 		  	}).catch(err=>{
 		  		self.setState({
 		  			message: 'message failed'
@@ -142,8 +132,8 @@ export default class InboxBox extends React.Component {
   	var self = this;
 
   	setInterval(function(){ 
-  		if(self.state.selectedFriend){
-  			self.getConn(self.state.selectedFriend);
+  		if(self.props.favoriteInfo.username){
+  			self.getConn();
   		}
   	 }, 60000);
   }
@@ -153,18 +143,9 @@ export default class InboxBox extends React.Component {
   		<div>
   			
 	  		<h4 className="purpleText"><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span> Inbox</h4>
-	      	<select onChange={this.getFriend}>
-	      		<option disabled value=''>select a friend</option>
-	      		{this.props.user.name && this.props.user.friends.map( (doc,index)=>{
-	      			if(doc !== this.props.user.username){
-	      				return <option key={index} value={doc}>{doc}</option>
-	      			}
-	      		})}
-	      	</select>
-	      	<br/>
-	      	<br/>
-	      	{this.state.selectedFriend && <h3 className="whiteText">{this.state.selectedFriend}'s messages</h3>}
-	      	{this.state.selectedFriend && <button type="button" onClick={()=>{this.getConn(this.state.selectedFriend)}} className="btn connButton"><span className="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>}
+	      	
+	      	{this.props.favoriteInfo.username && <h3 className="whiteText">{this.props.favoriteInfo.username}'s messages</h3>}
+	      	{this.props.favoriteInfo.username && <button type="button" onClick={()=>{this.getConn()}} className="btn connButton"><span className="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>}
 
 	      	<div id='inboxContainer' className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 well InboxCont">
 	      		{this.props.user.name && this.state.results.messages && this.state.results.messages.map( (doc,index)=>{
@@ -172,10 +153,10 @@ export default class InboxBox extends React.Component {
 	      		})}
 	      	</div>
 	      	<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-	      		{this.state.selectedFriend && <h5 className="purpleText">Send a message to @{this.state.selectedFriend}</h5>}
-	      		{this.state.selectedFriend && 
+	      		{this.props.favoriteInfo.username && <h5 className="purpleText">Send a message to @{this.props.favoriteInfo.username}</h5>}
+	      		{this.props.favoriteInfo.username && 
 	      			<form onSubmit={(e)=>{this.handleSubmit(e)} }>
-		      			<input id='inboxInput' className="themeInput" type='text' placeholder="type here..." onChange={this.handleChange}/>
+		      			<textarea rows="4" id='inboxInput' className="themeInput" type='text' placeholder="type here..." onChange={this.handleChange}/>
 		      			<button className="btn connButton" type="submit"><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span> Send</button>
 		      			<p className="purpleText">{this.state.message}</p>
 	      			</form>}
@@ -186,7 +167,7 @@ export default class InboxBox extends React.Component {
 
   render() {
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 backYellow clearBoth">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rainYellow clearBoth" style={{borderRadius:'10px'}}>
       	{this.props.user.name && this.renderInbox()}
       </div>
     );

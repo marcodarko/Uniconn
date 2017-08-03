@@ -40,6 +40,7 @@ constructor(props) {
   this.getAge = this.getAge.bind(this);
   this.checkState = this.checkState.bind(this);
   this.getLocation = this.getLocation.bind(this);
+  this.getDescription = this.getDescription.bind(this);
 }
 
 getName(event){
@@ -78,6 +79,14 @@ getAge(event){
     });
 
 }
+
+getDescription(event){
+    this.setState({
+      description: event.target.value.trim()
+    });
+
+}
+
 getHereFor(event){
 
     this.setState({
@@ -126,6 +135,7 @@ checkState(){
   if( this.state.name &&
     this.state.username &&
     this.state.age &&
+    this.description &&
     this.state.password1 && 
     this.state.password2 &&
     this.state.herefor &&
@@ -157,14 +167,15 @@ handleSubmit(){
     herefor: this.state.herefor,
     identity: this.state.identity,
     latitude: this.state.latitude,
-    longitude: this.state.longitude
+    longitude: this.state.longitude,
+    description: this.state.description
   }
 
   axios.post('/register', newUserInfo).then(res=>{
 
     console.log("registration res", res.data);
     this.setState({
-    submitMSG:"Success"
+    submitMSG:"You Can Login Now!"
     });
 
   }).catch(err=>{
@@ -224,7 +235,10 @@ handleSubmit(){
           <label>Age</label>
           <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Age" name="age" required onChange={this.getAge}></input>
         </div>
-        
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>A Little About You (130 characters max)</label>
+          <textarea rows="4" maxLength='130' style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Type Here..." name="description" required onChange={this.getDescription}></textarea>
+        </div>
          <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Here For</label>
           <br/>

@@ -35,7 +35,7 @@ export default class Home extends React.Component {
   		user: newuser
   	});
     this.state.socket.emit('user joined',this.state.user);
-  	console.log('HOME USER INFO', this.state);
+  	//console.log('HOME USER INFO', this.state);
   }
 
   login(){
@@ -74,8 +74,7 @@ export default class Home extends React.Component {
       	<Header sendUserToHome={this.sendUserToHome} user={this.state.user} login={this.login} register={this.register}/> 
         <LoginForm logged={this.logged} action={this.state.action} user={this.state.user} sendUserToHome={this.sendUserToHome}/>  
       	<Divider/>
-      	<LocationBox user={this.state.user} updateUser={this.updateUser}/> 
-        <InboxBox sendUserToHome={this.sendUserToHome} user={this.state.user}/>
+      	<LocationBox user={this.state.user} updateUser={this.updateUser}/>         
         <FavoritesSlider user={this.state.user} updateUser={this.updateUser} />
       	<Results user={this.state.user} updateUser={this.updateUser}/>
       	<Divider/>
