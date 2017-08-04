@@ -12,6 +12,14 @@ h1, h2, h3, h4 ,h5{
   font-family: TitleFont;
 }
 
+.regularFont{
+  font-family: RegularFont;
+}
+
+.titleFont{
+  font-family: TitleFont;
+}
+
 body{
   /*cursor: url('./uniicon.ico'),default;*/
 }
@@ -96,12 +104,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9d7a', end
 }
 
 .rainGreen{
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffd563+0,74ed8a+100 */
-background: rgb(255,213,99); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(255,213,99,1) 0%, rgba(116,237,138,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, rgba(255,213,99,1) 0%,rgba(116,237,138,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, rgba(255,213,99,1) 0%,rgba(116,237,138,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd563', endColorstr='#74ed8a',GradientType=0 ); /* IE6-9 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fff968+0,74ed8a+100 */
+background: rgb(255,249,104); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,249,104,1) 0%, rgba(116,237,138,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,249,104,1) 0%,rgba(116,237,138,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,249,104,1) 0%,rgba(116,237,138,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff968', endColorstr='#74ed8a',GradientType=0 ); /* IE6-9 */
 }
 
 .rainBlue{
@@ -213,19 +221,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7b44bf', end
   outline: none;
 }
 
-
 #profilePhoto{
   width: 150px;
   border-radius: 100%;
-  border: 15px solid transparent;
-  border:2px solid lightpink;
+  border:3px solid lightyellow;
   margin:4px;
 }
 
 .profilePhoto{
   width:40%;
   border-radius: 100%;
-  border: 15px solid transparent;
   border:2px solid lightpink;
   margin:4px;
 }
@@ -624,7 +629,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f989d6', end
 }
 
 .heroImage{
-	width: 80%;
+	width: 70%;
 }
 
 #spanHero{
@@ -1144,7 +1149,7 @@ margin:5px;
 .messageBox{
   border-radius: 10px;
   border:lightblue 2px solid;
-  min-height:200px;
+  min-height:300px;
   max-height:500px;
   padding: 10px;
   margin-top: 10px;
@@ -1233,8 +1238,8 @@ margin:5px;
 }
 
 .privateMessageHeight{
-  min-height: 200px;
-  max-height: 400px;
+  min-height: 300px;
+  max-height: 500px;
   overflow: scroll;
 }
 
@@ -1352,4 +1357,60 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
   width: 80%;
   margin:10px;
 }
+
+.themeTable{
+  box-shadow: 2px 2px 2px purple;
+}
+
+.themeTable tbody tr{
+  background: rgba(14, 129, 205, .5);
+  margin-bottom: 2px;
+  border-radius: 10px;
+  color: white;
+  font-family: sans-serif;
+}
+
+.themeTable tbody tr:hover{
+  background: rgba(14, 129, 205, .7);
+  margin-bottom: 2px;
+  border-radius: 10px;
+  color: white;
+  font-family: sans-serif;
+}
+
+.themeTable tbody tr td:nth-Child(odd){
+  background: rgba(117, 38, 181, .7);
+  margin-bottom: 2px;
+  color: lightblue;
+  font-family: sans-serif;
+}
+
+.themeTablePrivate{
+  box-shadow: 2px 2px 2px purple;
+}
+
+.themeTablePrivate tbody tr{
+  background: rgba(219, 113, 26, .5);
+  margin-bottom: 2px;
+  border-radius: 10px;
+  color: white;
+  font-family: sans-serif;
+}
+
+.themeTablePrivate tbody tr:hover{
+  background: rgba(219, 113, 26, .7);
+  margin-bottom: 2px;
+  border-radius: 10px;
+  color: white;
+  font-family: sans-serif;
+}
+
+.themeTablePrivate tbody tr td:nth-Child(odd){
+  background: rgba(219, 113, 26, .7);
+  margin-bottom: 2px;
+  color: lightyellow;
+  font-family: sans-serif;
+}
+
+
 

@@ -71,7 +71,7 @@ handleSubmit(){
 renderLogin(){
 	return(<div>
           <h5 className="whiteText">Welcome Back</h5>
-          <img className="heroImg" src="./images/loginbanner.jpg" alt='login banner uniconn'/>
+          <img className="regImg" src="./images/loginbanner.jpg" alt='login banner uniconn'/>
 			<form >
 			  <div className="form-group">
 			    <label className="purpleText">Username</label>

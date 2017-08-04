@@ -8,7 +8,7 @@ export default class Divider extends React.Component {
 
   render() {
     return (
-      <div className="divider">
+      <div className="divider clearBoth">
       </div>
     );
   }

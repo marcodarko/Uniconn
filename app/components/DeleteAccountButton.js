@@ -39,7 +39,7 @@ export default class UnblockAllButton extends React.Component {
 
   render() {
     return (
-	 <button className="btn deleteButton" onClick={this.state.clicked ===false ? this.confirm : this.deleteAccount}>
+	 <button className="btn connButton" onClick={this.state.clicked ===false ? this.confirm : this.deleteAccount}>
       	{this.state.status}
     </button>
  

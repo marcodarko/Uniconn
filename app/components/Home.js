@@ -76,6 +76,7 @@ export default class Home extends React.Component {
       	<Divider/>
       	<LocationBox user={this.state.user} updateUser={this.updateUser}/>         
         <FavoritesSlider user={this.state.user} updateUser={this.updateUser} />
+        <Divider/>
       	<Results user={this.state.user} updateUser={this.updateUser}/>
       	<Divider/>
         <Footer/> 

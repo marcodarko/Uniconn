@@ -22,7 +22,7 @@ export default class UnblockAllButton extends React.Component {
 
   render() {
     return (
-      <button className="btn themeButton" onClick={()=>{ this.unblockAll(this.props.ID)}}>
+      <button className="btn connButton" onClick={()=>{ this.unblockAll(this.props.ID)}}>
       	{this.state.status}
       </button>
     );

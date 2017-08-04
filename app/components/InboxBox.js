@@ -132,7 +132,7 @@ export default class InboxBox extends React.Component {
   	var self = this;
 
   	setInterval(function(){ 
-  		if(self.props.favoriteInfo.username){
+  		if(self.props.favoriteInfo.username && self.props.user.name){
   			self.getConn();
   		}
   	 }, 60000);

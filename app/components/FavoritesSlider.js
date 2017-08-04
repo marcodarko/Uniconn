@@ -96,13 +96,12 @@ export default class FavoritesSlider extends React.Component {
 			      			}
 			      		})}    		
 			      		<h3>@{this.state.favoriteInfo.username}</h3>
-                <p>{this.state.favoriteInfo.identity}</p>
+                <p>{this.state.favoriteInfo.identity}, {this.state.favoriteInfo.relationship || "N/A"}</p>
 			      		<p>{this.state.favoriteInfo.name}, {this.state.favoriteInfo.age || "(age)"}</p>
                 <p>Height (ft): {this.state.favoriteInfo.height || "N/A"}", Weight (lbs): {this.state.favoriteInfo.weight || "N/A"}</p>
-                <div className="well backPink whiteText text-center"><b className="purpleText">About {this.state.favoriteInfo.username}:</b><br/>
+                <div className="backPink whiteText text-center"><b className="purpleText">About {this.state.favoriteInfo.username}:</b><br/>
                 {this.state.favoriteInfo.description|| "Oops he forgot to fill this out!"}</div>			      		
-			      		<p><b>Relationship Status:</b> {this.state.favoriteInfo.relationship || "N/A"}<br/>
-                <b>Here for:</b> {this.state.favoriteInfo.herefor}</p>
+                <p><b>Here for:</b> {this.state.favoriteInfo.herefor}</p>
 			      		<button className="btn connButton" onClick={()=>{this.UnfavoriteThis()}}>REMOVE</button>
 			      		<br/>
 			      		<br/>

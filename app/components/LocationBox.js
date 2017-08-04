@@ -64,42 +64,108 @@ export default class LocationBox extends React.Component {
 	  		{this.props.user.name && 
 	  		<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 rainGreen  text-center purpleText" style={{borderRadius:'10px', padding:'10px', marginBottom:'10px'}}>
 	  			<img className="jello-horizontal" id="profilePhoto" src={this.props.user.photo || './images/default.png'} alt="user photo"/>
-          <br/> 
-          <span style={{fontSize:'12px', color:'white'}}>Public User Information</span> <br/>
-          <h4 style={{color:'white', textShadow:"2px 2px 0px purple"}}> @{this.props.user.username}</h4>
-	  			<span><strong><span className="textWhite">{this.props.user.name}, </span></strong><span>{this.props.user.identity}, </span><span>{this.props.user.age}</span></span><br/>
-          <span><b>Height:</b> {this.props.user.height}, <b>Weight:</b> {this.props.user.weight}</span> <br/>
-          <span><b>{this.props.user.friends.length}</b> friends</span> <br/> 			
-          <span><b>Here For:</b> {this.props.user.herefor}</span> <br/>
-          <span><b>Status:</b> {this.props.user.relationship}</span> <br/>
           <br/>
-          <span style={{fontSize:'12px', color:'white'}}>Private Information</span> <br/>
-  				<span><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span> {this.props.user.email}</span><br/>
-  				<span><span className="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {this.props.user.latitude}, {this.props.user.longitude}</span>
-          <br/>
+          <span style={{fontSize:'12px', color:'hotpink'}}>Public Information</span> <br/>
+          <table className="table themeTable">
+            <tbody>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-user" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.name}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.age} yrs old
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.weight} lbs, {this.props.user.height} ft. 
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.identity}, {this.props.user.relationship}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.herefor}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.friends.length} friends
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <span style={{fontSize:'12px', color:'violet'}}>Private Information</span> <br/>
+          <table className="table themeTablePrivate">
+            <tbody>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.email}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                </td>
+                <td>
+                  {this.props.user.latitude}, {this.props.user.longitude}
+                </td>
+              </tr>              
+            </tbody>
+          </table>
           <hr/>
-  				<div className="rainBlue" style={{borderRadius:'10px', marginTop:'10px', border:'2px white solid'}}>
+  				<div className="rainOrange" style={{borderRadius:'10px', marginTop:'10px', border:'2px white solid', padding:'10px'}}>
   				<span style={{fontSize:'12px', color:'white'}}><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</span> 
           <br/>				
           <input type="button" className="btn loginButton" value="Edit Info" onClick={this.openModal} />
-          <Modal visible={this.state.visible} width="500px" height="600px" effect="fadeInUp" onClickAway={() => this.closeModal()}>
-              <div style={{padding:'10px'}} className="modalBack">
-                  <h3 className="purpleText"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit Info</h3>
+          <Modal visible={this.state.visible} width="500px" height="600px" effect="fadeInUp" onClickAway={() => this.closeModal()} style={{backgroundColor:'hotpink'}}>
+              <div style={{padding:'10px'}} >
+                  <h5 className="purpleText"><span className="glyphicon glyphicon-user" aria-hidden="true"></span> Edit Personal Info</h5>
                   <br/>
                   <div className='form-group'>
                     <form onSubmit={this.handleDescriptionSubmit}>
                       <textarea id="textarea" onChange={this.getDescription} rows="4" maxLength='130' placeholder={this.props.user.description || 'Type Here...'} style={{margin:'auto'}} type="text" className="form-control themeInput"></textarea>
-                      <button type='submit' className='btn connButton'><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
+                      {this.state.description && <button type='submit' className='btn connButton'><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>}
                     </form>
                     <span className="whiteText">{this.state.message}</span>
                   </div>
                   <hr/>
+                  <h5 className="purpleText"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> Uniconn Settings</h5>
+                  <br/>
                   <UnblockAllButton ID={this.props.user._id}/>
                   <br/>
                   <UpdateLocationButton ID={this.props.user._id}/>
                   <br/>
                   <DeleteAccountButton ID={this.props.user._id} user={this.props.user}/>
                   <br/>
+                  <hr/>
                   <button className="btn loginButton" onClick={() => this.closeModal()}>close</button>
               </div>
           </Modal>

@@ -30,12 +30,12 @@ export default class FaveBox extends React.Component {
   render() {
     return (
       <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center">
-        <h4>Chat Rooms</h4>
+        <h4>Conn Rooms</h4>
         <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-          <button className="btn connButton " type="button" onClick={this.renderPrivate}>Matches Chat</button>
+          <button className="btn connButton " type="button" onClick={this.renderPrivate}>Faves Conn</button>
         </div>
         <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-          <button className="btn connButton " type="button" onClick={this.renderGeneral}>General Chat</button>
+          <button className="btn connButton " type="button" onClick={this.renderGeneral}>All Conn</button>
         </div>
         <br/>	  			
 	  		{this.state.renderThis === 'general' && <MessagesBox user={this.props.user} updateUser={this.props.updateUser}/>}

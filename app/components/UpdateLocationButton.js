@@ -47,7 +47,7 @@ export default class UpdateLocationButton extends React.Component {
 
   render() {
     return (
-      <button className="btn themeButton" onClick={this.getLocation}>
+      <button className="btn connButton" onClick={this.getLocation}>
       	{this.state.status}
       </button>
     );
