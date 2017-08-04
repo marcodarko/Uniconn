@@ -50,6 +50,15 @@ var UserSchema = mongoose.Schema({
 	},
 	description:{
 		type: String
+	},
+	relationship:{
+		type: String
+	},
+	height:{
+		type: String
+	},
+	weight:{
+		type: String
 	}
 }, { collection: 'users' });
 

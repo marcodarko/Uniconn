@@ -26,7 +26,8 @@ constructor(props) {
      submitMSG:'',
      latitude:'',
      longitude: '',
-      locationMSG: "Get Location"
+     locationMSG: "Get Location",
+     relationship:''
     };
   this.getPassword1 = this.getPassword1.bind(this);
   this.getPassword2 = this.getPassword2.bind(this);
@@ -41,6 +42,9 @@ constructor(props) {
   this.checkState = this.checkState.bind(this);
   this.getLocation = this.getLocation.bind(this);
   this.getDescription = this.getDescription.bind(this);
+  this.getRelationship = this.getRelationship.bind(this);
+  this.getHeight = this.getHeight.bind(this);
+  this.getWeight = this.getWeight.bind(this);
 }
 
 getName(event){
@@ -50,6 +54,23 @@ getName(event){
   	})
 
 }
+
+getHeight(event){
+
+    this.setState({
+      height: event.target.value.trim()
+    })
+
+}
+
+getWeight(event){
+
+    this.setState({
+      weight: event.target.value.trim()
+    })
+
+}
+
 getUsername(event){
 
   	this.setState({
@@ -91,6 +112,14 @@ getHereFor(event){
 
     this.setState({
       herefor: event.target.value
+    });
+
+}
+
+getRelationship(event){
+
+    this.setState({
+      relationship: event.target.value
     });
 
 }
@@ -141,6 +170,9 @@ checkState(){
     this.state.herefor &&
     this.state.identity &&
     this.state.latitude &&
+    this.state.relationship &&
+    this.state.height &&
+    this.state.weight &&
     this.state.longitude){
     return true;
   }
@@ -168,7 +200,10 @@ handleSubmit(){
     identity: this.state.identity,
     latitude: this.state.latitude,
     longitude: this.state.longitude,
-    description: this.state.description
+    description: this.state.description,
+    relationship: this.state.relationship,
+    height: this.state.height,
+    weight: this.state.weight
   }
 
   axios.post('/register', newUserInfo).then(res=>{
@@ -224,9 +259,9 @@ handleSubmit(){
 
     	<div className="container registerContainer">
       <h5 className="whiteText">New User Registration</h5>
+      <img className="regImg" src="./images/unireg.jpg" alt='login banner uniconn'/>
       <hr/>
-			<form>
-       
+			<form>      
 			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Name</label>
 			    <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Name" name="name" required onChange={this.getName}></input>
@@ -236,6 +271,14 @@ handleSubmit(){
           <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Age" name="age" required onChange={this.getAge}></input>
         </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>Height (Feet)</label>
+          <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Height Ex. 6.9 " name="name" required onChange={this.getHeight}></input>
+        </div>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>Weight (Pounds)</label>
+          <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Weight Ex. 155" name="name" required onChange={this.getWeight}></input>
+        </div>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>A Little About You (130 characters max)</label>
           <textarea rows="4" maxLength='130' style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Type Here..." name="description" required onChange={this.getDescription}></textarea>
         </div>
@@ -243,7 +286,7 @@ handleSubmit(){
           <label>Here For</label>
           <br/>
           <select onChange={this.getHereFor}>
-            <option value="" disabled >Choose your option</option>
+            <option value="">Choose your option</option>
             <option value="friends">Friends</option>
             <option value="dating">Dating</option>
             <option value="whatever">Whatever</option>
@@ -253,7 +296,7 @@ handleSubmit(){
           <label>Sexual Identity</label>
           <br/>
           <select onChange={this.getIdentity}>
-            <option value="" disabled >Choose your option</option>
+            <option value="">Choose your option</option>
             <option value="gay">Gay</option>
             <option value="bi">Bi</option>          
             <option value="transgender">Transgender</option>
@@ -261,7 +304,18 @@ handleSubmit(){
             <option value="non-binary">Non-Binary</option>
             <option value="androgenous">Androgenous</option>
             <option value="fluid">Fluid</option>
-            <option value="unicorn">Unicorn</option>
+          </select>
+        </div>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label>Relationship status</label>
+          <br/>
+          <select onChange={this.getRelationship}>
+            <option value="">Choose your option</option>
+            <option value="single">Single</option>
+            <option value="dating someone">Dating Someone</option>
+            <option value="serious relationship">Serious Relationship</option>          
+            <option value="married">Married (Monogamous)</option>
+            <option value="open relationship">Married (Open)</option>
           </select>
         </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

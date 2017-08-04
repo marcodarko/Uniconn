@@ -53,7 +53,7 @@ getDistance(e){
 	    	 	<label className='whiteText'>Distance</label>
 	    	 	<br/>
 	    	 	<select onChange={this.getDistance}>
-	    	 		<option value="" disabled >Choose Distance</option>
+	    	 		<option value="" >Choose Distance</option>
 	    	 		<option value='2640'>Within 5 Miles</option>
 	    	 		<option value='52800'>Within 10 Miles</option>
 	    	 		<option value='79200'>Within 15 Miles</option>

@@ -81,7 +81,7 @@ export default class FavoritesSlider extends React.Component {
 		  	<div>
 		      
 		      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 whiteText text-center">
-		      	{this.state.favoriteInfo.name && <h5>Viewing Friend # {this.state.currentFriend + 1} out of {this.props.user.friends.length} friends</h5>}
+		      	{this.state.favoriteInfo.name && <h5>{this.state.currentFriend + 1} out of {this.props.user.friends.length} friends</h5>}
 		      	<p>{this.state.message}</p>
 		      </div>
 		      	<div className="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-center verticalCenter"><button onClick={()=>{ this.getPrevious()}} className="btn themeButton"><span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button></div>
@@ -92,13 +92,17 @@ export default class FavoritesSlider extends React.Component {
 			      		<img className="profilePhoto slide-in-fwd-center" src={this.state.favoriteInfo.photo || './images/default.png'} alt="favorite uniconn"/> 
 			      		{this.state.favoriteInfo.friends.map( (friend,index)=>{
 			      			if(friend === this.props.user.username){
-			      				return <h4 key={index} className="heartbeat" style={{color: '#fff153'}}><span className="glyphicon glyphicon-heart" aria-hidden="true"></span> You're a Match!</h4>
+			      				return <h4 key={index} className="heartbeat" style={{color: '#fff153'}}><span className="glyphicon glyphicon-heart" aria-hidden="true"></span> You're His Favorite Too!</h4>
 			      			}
 			      		})}    		
-			      		<h5>@{this.state.favoriteInfo.username}</h5>
-			      		<p>{this.state.favoriteInfo.name}, {this.state.favoriteInfo.age}</p>
-			      		<p>{this.state.favoriteInfo.identity}</p>
-			      		<p><b>Here for:</b> {this.state.favoriteInfo.herefor}</p>
+			      		<h3>@{this.state.favoriteInfo.username}</h3>
+                <p>{this.state.favoriteInfo.identity}</p>
+			      		<p>{this.state.favoriteInfo.name}, {this.state.favoriteInfo.age || "(age)"}</p>
+                <p>Height (ft): {this.state.favoriteInfo.height || "N/A"}", Weight (lbs): {this.state.favoriteInfo.weight || "N/A"}</p>
+                <div className="well backPink whiteText text-center"><b className="purpleText">About {this.state.favoriteInfo.username}:</b><br/>
+                {this.state.favoriteInfo.description|| "Oops he forgot to fill this out!"}</div>			      		
+			      		<p><b>Relationship Status:</b> {this.state.favoriteInfo.relationship || "N/A"}<br/>
+                <b>Here for:</b> {this.state.favoriteInfo.herefor}</p>
 			      		<button className="btn connButton" onClick={()=>{this.UnfavoriteThis()}}>REMOVE</button>
 			      		<br/>
 			      		<br/>

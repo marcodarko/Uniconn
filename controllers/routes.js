@@ -174,6 +174,13 @@ router.put('/unblock-all/:id', function( req, res){
 	})
 });
 
+router.put('/api/user-description/:id', function( req, res){
+	users.update({_id: req.params.id},{$set:{description: req.body.description }},function(err,updatedUser){
+		if(err) throw err;
+		res.send(updatedUser);
+	})
+});
+
 // deletes user from DB
 router.delete('/delete-account/:id', function (req,res) {
 
