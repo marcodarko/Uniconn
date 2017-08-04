@@ -84,7 +84,7 @@ export default class InboxBox extends React.Component {
   		  	let newMSG={
 		  		author:self.props.user.username,
 		  		message: self.state.yourMSG,
-		  		sent: moment().format('h:mm:ss a'),
+		  		sent: moment().format('MMMM Do YYYY, h:mm:ss'),
 		  		read: false
 		  	}
 		  	axios.put('/conn/'+self.state.connID, newMSG).then(res =>{
@@ -107,7 +107,7 @@ export default class InboxBox extends React.Component {
 					messages:[{
 							author:self.props.user.username,
 					  		message: self.state.yourMSG,
-					  		sent: moment().format('h:mm:ss a'),
+					  		sent: moment().format('MMMM Do YYYY, h:mm:ss'),
 					  		read: false
 					  		}]
 					  	}
@@ -142,9 +142,9 @@ export default class InboxBox extends React.Component {
   	return(
   		<div>
   			
-	  		<h4 className="purpleText"><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span> Inbox</h4>
+	  		<h4 className="purpleText">Inbox</h4>
 	      	
-	      	{this.props.favoriteInfo.username && <h3 className="whiteText">{this.props.favoriteInfo.username}'s messages</h3>}
+	      	{this.props.favoriteInfo.username && <h4 style={{color:'hotpink'}}>{this.props.favoriteInfo.username}'s messages</h4>}
 	      	{this.props.favoriteInfo.username && <button type="button" onClick={()=>{this.getConn()}} className="btn connButton"><span className="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>}
 
 	      	<div id='inboxContainer' className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 well InboxCont">

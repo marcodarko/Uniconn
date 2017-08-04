@@ -89,7 +89,7 @@ export default class FavoritesSlider extends React.Component {
 		      		{!this.state.favoriteInfo.name && <button className="btn connButton" onClick={()=>{this.renderFriend()}}>My Favorites</button>} 
 		      		{this.state.favoriteInfo.name && 
 			      		<div className="whiteText">
-			      		<img className="profilePhoto slide-in-fwd-center" src={this.state.favoriteInfo.photo || './images/default.png'} alt="favorite uniconn"/> 
+			      		<img className="profilePhoto" src={this.state.favoriteInfo.photo} alt="favorite uniconn"/> 
 			      		{this.state.favoriteInfo.friends.map( (friend,index)=>{
 			      			if(friend === this.props.user.username){
 			      				return <h4 key={index} className="heartbeat" style={{color: '#fff153'}}><span className="glyphicon glyphicon-heart" aria-hidden="true"></span> You're His Favorite Too!</h4>
@@ -99,7 +99,7 @@ export default class FavoritesSlider extends React.Component {
                 <p>{this.state.favoriteInfo.identity}, {this.state.favoriteInfo.relationship || "N/A"}</p>
 			      		<p>{this.state.favoriteInfo.name}, {this.state.favoriteInfo.age || "(age)"}</p>
                 <p>Height (ft): {this.state.favoriteInfo.height || "N/A"}", Weight (lbs): {this.state.favoriteInfo.weight || "N/A"}</p>
-                <div className="backPink whiteText text-center"><b className="purpleText">About {this.state.favoriteInfo.username}:</b><br/>
+                <div className="well backPink whiteText text-center"><b className="purpleText">About {this.state.favoriteInfo.username}:</b><br/>
                 {this.state.favoriteInfo.description|| "Oops he forgot to fill this out!"}</div>			      		
                 <p><b>Here for:</b> {this.state.favoriteInfo.herefor}</p>
 			      		<button className="btn connButton" onClick={()=>{this.UnfavoriteThis()}}>REMOVE</button>
@@ -118,6 +118,7 @@ export default class FavoritesSlider extends React.Component {
   render() {
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rainPurple clearBoth" style={{padding:'10px'}}>
+        {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
       	{this.props.user.name && this.renderMain()}
       </div>
     );

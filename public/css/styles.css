@@ -1106,18 +1106,21 @@ margin:5px;
 }
 
 .faveButton{
+  width:100%;
   background: transparent;
   border: none;
   outline: none;
 }
 
 .faveButton:hover{
+  width:100%;
   background: transparent;
   border: none;
   outline: none;
 }
 
 .faveButton:focus{
+  width:100%;
   background: transparent;
   border: none;
   outline: none;
@@ -1267,10 +1270,8 @@ margin:5px;
 }
 
 .InboxMessage{
-  background: #f2f2f2;
   margin-bottom: 3px;
   padding: 5px;
-  border: 2px solid #27a5e0;
   border-radius: 5px;
   position: relative;
 }
@@ -1307,9 +1308,9 @@ margin:5px;
   background-color: transparent;
   padding: 5px;
   border-radius: 7px;
-  border: 2px solid purple;
+  border: 2px solid white;
   text-decoration: none;
-  color: purple;
+  color: white;
   outline: none;
   position: absolute;
   bottom:0;

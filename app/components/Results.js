@@ -45,7 +45,7 @@ getDistance(e){
 
   render() {
     return (
-      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder slide-in-fwd-center clearBoth" style={{margin:'0px'}}>
+      <div className="panel panel-default col-sm-12 col-m-12 col-lg-12 backPink noBorder clearBoth" style={{margin:'0px'}}>
 	  <div className="panel-body text-center">
 	  	<div className='row'>
 	    	 {this.props.user.name && <h3 className="whiteText">Find Friends</h3>}
@@ -61,7 +61,8 @@ getDistance(e){
 	    	 		<option value='528000'>Within 100 Miles</option>
 	    	 	</select>
 	    	 </form>}
-	     	 {this.state.pickedDistance && this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}><span style={{color:'lightblue'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span> Go <span style={{color:'lightyellow'}} className="glyphicon glyphicon-heart" aria-hidden="true"></span></button>}	    
+	    	 <br/>
+	     	 {this.state.pickedDistance && this.props.user.name && <button className="btn themeButton heartbeat" type='button' onClick={this.handleClick}>Search</button>}	    
 		</div>
 		{this.state.resMSG === "No One Near You :(" && this.props.user.name && <div className="alert alert-danger alert-dismissable pinkBack noBorder whiteText" role="alert">
 		  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -69,7 +70,6 @@ getDistance(e){
 		</div>}
 	    <br/>
 	    <div id="resultsHere" className="row text-center">
-	    {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
 	    {this.state.results && this.props.user.name && this.state.results.map( (doc,index)=>{
 	    	if(doc.username !== this.props.user.username){
 	    		return <ResultItem updateUser={this.props.updateUser} userID={this.props.user._id} friends={doc.friends.length} status={doc.status} key={index}  photo={doc.photo} name={doc.name} username={doc.username} herefor={doc.herefor} description={doc.description} id={doc._id}/>

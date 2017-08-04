@@ -56,7 +56,7 @@ export default class MessagesBox extends React.Component {
   	let newMessage={
   		from: this.props.user.username,
   		message: this.state.userMSG,
-  		sent: moment().format('h:mm:ss a'),
+  		sent: moment().format('MMMM Do YYYY, h:mm:ss'),
   		fromID: this.props.user._id,
   		photo: this.props.user.photo
   	}
@@ -79,7 +79,7 @@ export default class MessagesBox extends React.Component {
         msg.from = self.props.user.username;
         msg.fromID = self.props.user._id;
         msg.photo = self.props.user.photo;
-        msg.sent = moment().format('h:mm:ss a');
+        msg.sent = moment().format('MMMM Do YYYY, h:mm:ss');
 
         self.state.socket.emit('chat message', msg);
     };

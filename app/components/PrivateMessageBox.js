@@ -34,7 +34,7 @@ export default class PrivateMessageBox extends React.Component {
 
   	this.setState({
   		selectedFriend: e.target.value,
-  		status: 'private conn with @'+e.target.value
+  		status: 'private Conn with @'+e.target.value
   	});
   }
 
@@ -42,7 +42,7 @@ export default class PrivateMessageBox extends React.Component {
   	document.getElementById('myprivates').innerHTML = '';
   	this.setState({
   		selectedFriend: friendUsername,
-  		status: 'private conn with @'+friendUsername
+  		status: 'Private Conn with @'+friendUsername
   	});
   }
 
@@ -54,7 +54,7 @@ export default class PrivateMessageBox extends React.Component {
 		    to: this.state.selectedFriend,
 		    from: this.props.user.username,
 		    message: this.state.userMsg,
-		    sent: moment().format('h:mm:ss a')
+		    sent: moment().format('MMMM Do YYYY, h:mm:ss')
 	   }
 	   	document.getElementById('privInput').value='';
 
@@ -67,7 +67,7 @@ export default class PrivateMessageBox extends React.Component {
   		this.state.socket.emit('private', newMSG);
   	 }else{
   	 	this.setState({
-  	 		status: 'you must select a friend'
+  	 		status: 'You must select a friend'
   	 	})
   	 }
 
@@ -104,7 +104,7 @@ export default class PrivateMessageBox extends React.Component {
 			    from: self.props.user.username,
 			    message: self.state.userMsg,
 			    file: evt.target.result,
-			    sent: moment().format('h:mm:ss a')
+			    sent: moment().format('MMMM Do YYYY, h:mm:ss')
 		   }
 
 		   let msgArray = self.state.messages;
@@ -118,7 +118,7 @@ export default class PrivateMessageBox extends React.Component {
 	    reader.readAsDataURL(file);
     }else{
     	self.setState({
-  	 		status: 'you must select a friend'
+  	 		status: 'You must select a friend'
   	 	})
     }
 
@@ -129,7 +129,8 @@ export default class PrivateMessageBox extends React.Component {
   	return(
   		  <div>
       	  {this.props.user.name && <h4 className="whiteText">Private Matches Chat</h4>}
-          <p>guys that also have you as a favorite will show up here</p>
+          <p style={{fontSize:'10px'}}>guys that also have you as a favorite will show up here</p>
+          <h5 className="purpleText">{this.state.status}</h5>
       	  <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 privateList'>
       	  	{this.props.user.name && this.props.user.friends.map( (friend, index)=>{
               if(friend !== this.props.user.username){
@@ -153,7 +154,7 @@ export default class PrivateMessageBox extends React.Component {
 	          <input id="chatIMG" className="inputfile pinkBack whiteText" type="file" accept="image/*" onChange={this.getImage}/>
 	        </form>
 		  
-		  	<h5 className="purpleText">{this.state.status}</h5>
+		  	
 	      
 	     </div>
       	</div>
