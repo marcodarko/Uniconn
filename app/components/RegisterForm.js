@@ -8,6 +8,9 @@ import {
 } from 'react-router-dom'
 import MainIcon1 from './MainIcon1';
 
+import ageCalculator from 'age-calculator';
+import {AgeFromDateString, AgeFromDate} from 'age-calculator';
+
 export default class RegisterForm extends React.Component{
 
 constructor(props) {
@@ -20,14 +23,17 @@ constructor(props) {
      name: "",
      age:'',
      email:"",
-     identity: 'gay',
-     herefor:'friends',
+     identity: '',
+     herefor:'',
      passwordMSG:"",
      submitMSG:'',
      latitude:'',
      longitude: '',
      locationMSG: "Get Location",
-     relationship:''
+     relationship:'',
+     ageMSG: '',
+     usernameMSG:'',
+     submitBtn: false
     };
   this.getPassword1 = this.getPassword1.bind(this);
   this.getPassword2 = this.getPassword2.bind(this);
@@ -45,6 +51,13 @@ constructor(props) {
   this.getRelationship = this.getRelationship.bind(this);
   this.getHeight = this.getHeight.bind(this);
   this.getWeight = this.getWeight.bind(this);
+  this.renderCheck = this.renderCheck.bind(this);
+}
+
+renderCheck(){
+  return (
+      <span style={{color:'#74ed8a', textShadow:'1px 1px 1px #b14204'}} className="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+    )
 }
 
 getName(event){
@@ -73,11 +86,29 @@ getWeight(event){
 
 getUsername(event){
 
-  	this.setState({
-  		username: event.target.value.toLowerCase()
-  	})
+    let x= event.target.value.trim();
+    x.toLowerCase();
 
+    if (x){
+        axios.get('/user-u/'+x ).then(res=>{
 
+          if( res.data ){
+            this.setState({
+              usernameMSG: "Username is Taken"
+            })
+          }else{
+            this.setState({
+              username: x,
+              usernameMSG: "Username Available"
+            })
+          }
+
+        });
+    }else{
+      this.setState({
+        usernameMSG: ''
+      })
+    }
 }
 getEmail(event){
 
@@ -95,9 +126,24 @@ getIdentity(event){
 }
 
 getAge(event){
+    
+  let ageFromString = new AgeFromDateString(event.target.value).age;
+  //console.log('Your Age', ageFromString);
+  
+  if( parseInt(ageFromString) >= 18){
     this.setState({
-      age: event.target.value.trim()
+      age: ageFromString,
+      ageMSG: "Age OK"
     });
+  }else if( parseInt(ageFromString) < 18){
+    this.setState({
+      ageMSG: 'You Must Be 18 or Older To Sign Up'
+    });
+  }else if( parseInt(ageFromString) > 100){
+    this.setState({
+      ageMSG: 'Please Use Date Picker'
+    });
+  }
 
 }
 
@@ -174,6 +220,7 @@ checkState(){
     this.state.height &&
     this.state.weight &&
     this.state.longitude){
+    
     return true;
   }
   else{
@@ -265,22 +312,28 @@ handleSubmit(){
 			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Name</label>
 			    <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Name" name="name" required onChange={this.getName}></input>
+          {this.state.name && this.renderCheck()}
 			  </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Age</label>
-          <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Age" name="age" required onChange={this.getAge}></input>
+          <input style={{margin:'auto'}} type="date" className="form-control themeInput" placeholder="Age" name="age" required onChange={this.getAge}></input>
+          <h5 style={{color: this.state.ageMSG === "You Must Be 18 or Older To Sign Up" ? 'red': "white"}}>{this.state.ageMSG}</h5>
+          {this.state.age && this.renderCheck()}
         </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <label>Height (Feet)</label>
-          <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Height Ex. 6.9 " name="name" required onChange={this.getHeight}></input>
+          <label>Height (Feet.Inches)</label>
+          <input autoComplete='off' maxLength='3' style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Height Ex. 6.9 " name="name" required onChange={this.getHeight}></input>
+          {this.state.height && this.renderCheck()}
         </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Weight (Pounds)</label>
-          <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Weight Ex. 155" name="name" required onChange={this.getWeight}></input>
+          <input autoComplete='off' maxLength='3' style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Weight Ex. 155" name="name" required onChange={this.getWeight}></input>
+          {this.state.weight && this.renderCheck()}
         </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>A Little About You (130 characters max)</label>
           <textarea rows="4" maxLength='130' style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Type Here..." name="description" required onChange={this.getDescription}></textarea>
+          {this.state.description && this.renderCheck()}
         </div>
          <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Here For</label>
@@ -291,6 +344,7 @@ handleSubmit(){
             <option value="dating">Dating</option>
             <option value="whatever">Whatever</option>
           </select>
+          {this.state.herefor !== ''  && this.renderCheck()}
         </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Sexual Identity</label>
@@ -305,6 +359,7 @@ handleSubmit(){
             <option value="androgenous">Androgenous</option>
             <option value="fluid">Fluid</option>
           </select>
+          {this.state.identity !== ''  && this.renderCheck()}
         </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <label>Relationship status</label>
@@ -315,35 +370,45 @@ handleSubmit(){
             <option value="dating someone">Dating Someone</option>
             <option value="serious relationship">Serious Relationship</option>          
             <option value="married">Married (Monogamous)</option>
-            <option value="open relationship">Married (Open)</option>
+            <option value="open relationship">Open Relationship</option>
+            <option value="complicated">Complicated</option>
           </select>
+          {this.state.relationship !== '' && this.renderCheck()}
+        </div>
+        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <label>Set Location</label><br/>
+          <MainIcon1 getLocation={this.getLocation} locationMSG={this.state.locationMSG}/>
+           {this.state.locationMSG === "Location Found" && this.renderCheck()}
         </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Username</label>
 			    <input style={{margin:'auto'}} type="text" className="form-control themeInput" placeholder="Username" name="username" required onChange={this.getUsername}></input>
+          <h5 style={{color: this.state.usernameMSG === "Username is Taken" ? 'red': "white"}}>{this.state.usernameMSG}</h5>
+          {this.state.usernameMSG  === 'Username Available' && this.renderCheck()}
 			  </div>
 			   <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Email</label>
 			    <input style={{margin:'auto'}} type="email" className="form-control themeInput" placeholder="Email" name="email" required onChange={this.getEmail}></input>
+          {this.state.email && this.renderCheck()}
 			  </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Password</label>
 			    <input style={{margin:'auto'}} type="password" className="form-control themeInput" placeholder="Password" name="password1" required onChange={this.getPassword1}></input>
+          
 			  </div>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
           <span style={{color: this.state.passwordMSG === "Passwords Match" ? '#00db8e': "#ff6464"}}>{this.state.passwordMSG}</span>
+
         </div>
 			  <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			    <label>Confirm Password</label>
 			    <input style={{margin:'auto'}} type="password" className="form-control themeInput" placeholder="Confirm Password" name="password2" required onChange={this.getPassword2}></input>
-			  </div>
+           
+			  </div>        
+        <hr/>
+			   <button type="button" onClick={this.handleSubmit} className="btn btn-lg loginButton">Submit</button>
         <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <label>Set Location</label><br/>
-          <MainIcon1 getLocation={this.getLocation} locationMSG={this.state.locationMSG}/>
-        </div>
-			  <button type="button" onClick={this.handleSubmit} className="btn btn-lg loginButton">Submit</button>
-        <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-        <h3 style={{color: this.state.submitMSG === "Success" ? '#00db8e': "#ff6464"}}>{this.state.submitMSG}</h3>
+        <h3 className='heartbeat' style={{color: this.state.submitMSG === "You Can Login Now!" ? '#00db8e': "#ff6464"}}>{this.state.submitMSG}</h3>
        </div>
 			</form>
 		</div>

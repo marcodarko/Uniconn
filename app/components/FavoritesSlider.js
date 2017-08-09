@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import InboxBox from './InboxBox';
+import WelcomeScreen from '../components/WelcomeScreen';
 
 export default class FavoritesSlider extends React.Component {
 
@@ -92,7 +93,7 @@ export default class FavoritesSlider extends React.Component {
 			      		<img className="profilePhoto" src={this.state.favoriteInfo.photo} alt="favorite uniconn"/> 
 			      		{this.state.favoriteInfo.friends.map( (friend,index)=>{
 			      			if(friend === this.props.user.username){
-			      				return <h4 key={index} className="heartbeat" style={{color: '#fff153'}}><span className="glyphicon glyphicon-heart" aria-hidden="true"></span> You're His Favorite Too!</h4>
+			      				return <h4 key={index} className="heartbeat colorChange" style={{color: '#fff153'}}><span className="glyphicon glyphicon-heart" aria-hidden="true"></span> You're His Favorite Too!</h4>
 			      			}
 			      		})}    		
 			      		<h3>@{this.state.favoriteInfo.username}</h3>
@@ -118,8 +119,8 @@ export default class FavoritesSlider extends React.Component {
   render() {
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rainPurple clearBoth" style={{padding:'10px'}}>
-        {!this.props.user.name && <img src="./images/homeHero.jpg" alt="home image uniconn" className="jello-horizontal heroImg"/>}
       	{this.props.user.name && this.renderMain()}
+        {!this.props.user.name && <WelcomeScreen/>}
       </div>
     );
   }

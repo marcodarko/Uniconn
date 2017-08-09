@@ -9,6 +9,7 @@ import PrivateMessageBox from '../components/PrivateMessageBox';
 import InboxBox from '../components/InboxBox';
 import FavoritesSlider from '../components/FavoritesSlider';
 import axios from 'axios';
+import WelcomeScreen from '../components/WelcomeScreen';
 
 export default class Home extends React.Component {
 
