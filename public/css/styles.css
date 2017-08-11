@@ -724,16 +724,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf192', end
 
 .pictureFW{
   border-radius: 10px;
-  width: 100%;
+  width: 90%;
 }
 
 .pictureHW{
   border-radius: 10px;
-  width: 50%;
+  width: 60%;
+}
+
+.welcomeText{
+  font-weight: bolder;
+  font-family: sans-serif;
 }
 
 .clearBoth{
   clear: both;
+}
+
+.noBorder{
+  border: none;
 }
 
 .flexP{
